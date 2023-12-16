@@ -1,0 +1,11 @@
+Nr,Resultat,Wind,Rang,Name,Verein,Nat.,Geb. Dat.,Wettkampf,Ort,Datum,athlete_code,club_code,event_code
+1,8.32_SR,0.0,1f1,Max,LV Muster,SUI,15.02.2000,Test Event,Loc1,02.11.2023,Athlete_1,Club_1,Event_1
+2,8.22,0.0,,Tester_2,Club_2,SUI,02.05.1998,Event_2,Loc2,02.08.2022,CONTACT.WEB.131887,ACC_1.SGALV.1011,a21aa-bo4orw-lmohe2n4-1-lmqeq53i-178
+3,8.19,abc,1D1,Tester_3,Club_3,SUI,03.05.1998,Event_3,Loc3,03.08.2022,CONTACT.WEB.131887,ACC_1.SGALV.1011,a21aa-vh5dlf-lflc2526-1-lftcapgq-fua
+4,8.13,-0.3,3q2,Tester_4,Club_4,SUI,04.05.1998,Event_4,Loc4,04.08.2022,CONTACT.WEB.131887,ACC_1.SGALV.1011,a21aa-kipx9y-lldm7ywe-1-llkgw12q-1de
+5,8.12a,0.0,1f1,Tester_5,Club_5,SUI,05.05.1998,Event_5,Loc5,05.08.2022,CONTACT.WEB.131887,ACC_1.SGALV.1011,a21aa-pjr8yn-leb1bjdk-1-lemufw3n-lw9
+6,8.11,-0.1,2f,Tester_6,Club_6,SUI,06.05.1998,Event_6,Loc6,06.08.2022,CONTACT.WEB.131887,ACC_1.SGALV.1011,a21aa-6dqfqu-lik5k1lr-1-liok96bm-22q
+7,8.03,1.4,1f1,Tester_7,Club_7,SUI,07.13.1998,Event_7,Loc7,07.08.2022,CONTACT.WEB.131887,ACC_1.SGALV.1011,a21aa-oz1dk-lia60e1y-1-liihyltl-ilg3
+8,8.03,0.2,3f1,Tester_8,Club_8,SUI,08.05.1998,Event_8,Loc8,08.08.2022,CONTACT.WEB.131887,ACC_1.SGALV.1011,a21aa-hqi1yg-lhxtp92p-1-lhyiwnvp-145m
+9,7.97,-0.4,4f,Tester_9,Club_9,SUI,09.05.1998,Event_9,Loc9,09.08.2022,CONTACT.WEB.131887,ACC_1.SGALV.1011,a21aa-9n6igw-lj10xo8t-1-lj87weyd-6pjo
+10,7.97,,6,Tester_10,Club_10,SUI,10.05.1998,Event_10,Loc10,10.08.2022,CONTACT.WEB.131887,ACC_1.SGALV.1011,a21aa-aobnbq-lik5cou8-1-limy173z-8iun

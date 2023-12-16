@@ -1,0 +1,13 @@
+"""
+This package contains class related to scraping the swiss-athletics database website.
+"""
+import os
+
+from .scraper import Scraper
+from .processor import Processor
+from .scrape_config import ScrapeConfig
+from .bestlist_field import BestlistField
+
+files = os.listdir(os.path.dirname(__file__))
+files.remove("__init__.py")
+__all__ = [f[:-3] for f in files if f.endswith(".py")]

@@ -1,0 +1,7 @@
+database:
+  drivername: "mysql+pymysql"
+  username: "trackinsights"
+  password: "trackinsights"
+  host: "localhost"
+  port: "3306"
+  database: "track_insights"

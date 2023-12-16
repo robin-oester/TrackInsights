@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head id="j_idt2">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="robots" content="NOINDEX, NOFOLLOW"/>
+        <title>Resultate Datenbank</title>
+    </head>
+    <body class="main-body">
+        <div class="layout-wrapper">
+            <div class="layout-main">
+                <div class="layout-main-content">
+                    <span id="globalMsgs"></span>
+                    <form id="form_anonym" name="form_anonym" method="post" action="/satweb/faces/bestlist.xhtml" enctype="application/x-www-form-urlencoded">
+                        <input type="hidden" name="form_anonym" value="form_anonym"/>
+                        <div id="form_anonym:bestlistSearches" class="ui-outputpanel ui-widget">
+                            <div class="ui-g ui-fluid">
+                                <div class="ui-g-12 ui-lg-12">
+                                    <div class="card card-w-title">
+                                        <h1>Resultate Datenbank - Swiss-Athletics</h1>
+                                        <div id="form_anonym:j_idt27" class="ui-panelgrid ui-widget ui-panelgrid-blank form-group">
+                                            <div id="form_anonym:j_idt27_content" class="ui-panelgrid-content ui-widget-content ui-grid ui-grid-responsive">
+                                                <div class="ui-grid-row">
+                                                    <div class="ui-panelgrid-cell ui-grid-col-3">
+                                                        <div id="form_anonym:j_idt28" class="ui-panelgrid ui-widget form-group ui-panelgrid-blank">
+                                                            <div id="form_anonym:j_idt28_content" class="ui-panelgrid-content ui-widget-content ui-grid ui-grid-responsive">
+                                                                <div class="ui-grid-row">
+                                                                    <div class="ui-panelgrid-cell ui-grid-col-12">
+                                                                        <span class="md-selectonemenu">
+                                                                            <div id="form_anonym:bestlistYear" class="ui-selectonemenu ui-widget ui-state-default ui-corner-all">
+                                                                                <div class="ui-helper-hidden-accessible">
+                                                                                    <input id="form_anonym:bestlistYear_focus" name="form_anonym:bestlistYear_focus" type="text" autocomplete="off" role="combobox" aria-haspopup="true" aria-expanded="false"/>
+                                                                                </div>
+                                                                                <div class="ui-helper-hidden-accessible">
+                                                                                    <select id="form_anonym:bestlistYear_input" name="form_anonym:bestlistYear_input" tabindex="-1" aria-hidden="true" onchange="PrimeFaces.ab({s:&quot;form_anonym:bestlistYear&quot;,e:&quot;valueChange&quot;,p:&quot;form_anonym:bestlistYear&quot;,u:&quot;form_anonym:bestlistSearches globalMsgs&quot;,onco:function(xhr,status,args){doSpot();doShowToolTipSelectedYearAll();;},pa:[{name:&quot;aeswindowguid&quot;,value:&quot;ba98d03b-e0c1-43a5-fd72-a05130146a60&quot;}]});">
+                                                                                        <option value="ALL">Alle</option>
+                                                                                        <option value="2023" selected="selected">2023</option>
+                                                                                        <option value="2022">2022</option>
+                                                                                        <option value="2021">2021</option>
+                                                                                        <option value="2020">2020</option>
+                                                                                        <option value="2019">2019</option>
+                                                                                        <option value="2018">2018</option>
+                                                                                        <option value="2017">2017</option>
+                                                                                        <option value="2016">2016</option>
+                                                                                        <option value="2015">2015</option>
+                                                                                        <option value="2014">2014</option>
+                                                                                        <option value="2013">2013</option>
+                                                                                        <option value="2012">2012</option>
+                                                                                        <option value="2011">2011</option>
+                                                                                        <option value="2010">2010</option>
+                                                                                        <option value="2009">2009</option>
+                                                                                        <option value="2008">2008</option>
+                                                                                        <option value="2007">2007</option>
+                                                                                        <option value="2006">2006</option>
+                                                                                        <option value="2005">2005</option>
+                                                                                        <option value="2004">2004</option>
+                                                                                        <option value="2003">2003</option>
+                                                                                        <option value="2002">2002</option>
+                                                                                        <option value="2001">2001</option>
+                                                                                        <option value="2000">2000</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                                <label id="form_anonym:bestlistYear_label" class="ui-selectonemenu-label ui-inputfield ui-corner-all">&nbsp;</label>
+                                                                                <div class="ui-selectonemenu-trigger ui-state-default ui-corner-right">
+                                                                                    <span class="ui-icon ui-icon-triangle-1-s ui-c"></span>
+                                                                                </div>
+                                                                                <div id="form_anonym:bestlistYear_panel" class="ui-selectonemenu-panel ui-widget ui-widget-content ui-corner-all ui-helper-hidden ui-shadow">
+                                                                                    <div class="ui-selectonemenu-items-wrapper" style="height:200px">
+                                                                                        <ul id="form_anonym:bestlistYear_items" class="ui-selectonemenu-items ui-selectonemenu-list ui-widget-content ui-widget ui-corner-all ui-helper-reset" role="listbox">
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Alle" tabindex="-1" role="option">Alle</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="2023" tabindex="-1" role="option">2023</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="2022" tabindex="-1" role="option">2022</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="2021" tabindex="-1" role="option">2021</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="2020" tabindex="-1" role="option">2020</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="2019" tabindex="-1" role="option">2019</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="2018" tabindex="-1" role="option">2018</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="2017" tabindex="-1" role="option">2017</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="2016" tabindex="-1" role="option">2016</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="2015" tabindex="-1" role="option">2015</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="2014" tabindex="-1" role="option">2014</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="2013" tabindex="-1" role="option">2013</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="2012" tabindex="-1" role="option">2012</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="2011" tabindex="-1" role="option">2011</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="2010" tabindex="-1" role="option">2010</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="2009" tabindex="-1" role="option">2009</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="2008" tabindex="-1" role="option">2008</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="2007" tabindex="-1" role="option">2007</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="2006" tabindex="-1" role="option">2006</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="2005" tabindex="-1" role="option">2005</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="2004" tabindex="-1" role="option">2004</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="2003" tabindex="-1" role="option">2003</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="2002" tabindex="-1" role="option">2002</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="2001" tabindex="-1" role="option">2001</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="2000" tabindex="-1" role="option">2000</li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <label id="form_anonym:j_idt32" class="ui-outputlabel ui-widget label">Jahr</label>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="ui-grid-row">
+                                                                    <div class="ui-panelgrid-cell ui-grid-col-12">
+                                                                        <div id="form_anonym:j_idt35" aria-live="polite" class="ui-message"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ui-panelgrid-cell ui-grid-col-3">
+                                                        <div id="form_anonym:j_idt36" class="ui-panelgrid ui-widget form-group ui-panelgrid-blank">
+                                                            <div id="form_anonym:j_idt36_content" class="ui-panelgrid-content ui-widget-content ui-grid ui-grid-responsive">
+                                                                <div class="ui-grid-row">
+                                                                    <div class="ui-panelgrid-cell ui-grid-col-12">
+                                                                        <span class="md-selectonemenu">
+                                                                            <div id="form_anonym:bestlistSeason" class="ui-selectonemenu ui-widget ui-state-default ui-corner-all">
+                                                                                <div class="ui-helper-hidden-accessible">
+                                                                                    <input id="form_anonym:bestlistSeason_focus" name="form_anonym:bestlistSeason_focus" type="text" autocomplete="off" role="combobox" aria-haspopup="true" aria-expanded="false"/>
+                                                                                </div>
+                                                                                <div class="ui-helper-hidden-accessible">
+                                                                                    <select id="form_anonym:bestlistSeason_input" name="form_anonym:bestlistSeason_input" tabindex="-1" aria-hidden="true" onchange="PrimeFaces.ab({s:&quot;form_anonym:bestlistSeason&quot;,e:&quot;valueChange&quot;,p:&quot;form_anonym:bestlistSeason&quot;,u:&quot;form_anonym:bestlistSearches globalMsgs&quot;,onco:function(xhr,status,args){doSpot();},pa:[{name:&quot;aeswindowguid&quot;,value:&quot;ba98d03b-e0c1-43a5-fd72-a05130146a60&quot;}]});">
+                                                                                        <option value="false" selected="selected">Outdoor</option>
+                                                                                        <option value="true">Indoor</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                                <label id="form_anonym:bestlistSeason_label" class="ui-selectonemenu-label ui-inputfield ui-corner-all">&nbsp;</label>
+                                                                                <div class="ui-selectonemenu-trigger ui-state-default ui-corner-right">
+                                                                                    <span class="ui-icon ui-icon-triangle-1-s ui-c"></span>
+                                                                                </div>
+                                                                                <div id="form_anonym:bestlistSeason_panel" class="ui-selectonemenu-panel ui-widget ui-widget-content ui-corner-all ui-helper-hidden ui-shadow">
+                                                                                    <div class="ui-selectonemenu-items-wrapper" style="height:auto">
+                                                                                        <ul id="form_anonym:bestlistSeason_items" class="ui-selectonemenu-items ui-selectonemenu-list ui-widget-content ui-widget ui-corner-all ui-helper-reset" role="listbox">
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Outdoor" tabindex="-1" role="option">Outdoor</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Indoor" tabindex="-1" role="option">Indoor</li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <label id="form_anonym:j_idt40" class="ui-outputlabel ui-widget label">Saison</label>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="ui-grid-row">
+                                                                    <div class="ui-panelgrid-cell ui-grid-col-12">
+                                                                        <div id="form_anonym:j_idt41" aria-live="polite" class="ui-message"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ui-panelgrid-cell ui-grid-col-3">
+                                                        <div id="form_anonym:j_idt42" class="ui-panelgrid ui-widget form-group ui-panelgrid-blank">
+                                                            <div id="form_anonym:j_idt42_content" class="ui-panelgrid-content ui-widget-content ui-grid ui-grid-responsive">
+                                                                <div class="ui-grid-row">
+                                                                    <div class="ui-panelgrid-cell ui-grid-col-12">
+                                                                        <span class="md-selectonemenu">
+                                                                            <div id="form_anonym:bestlistCategory" class="ui-selectonemenu ui-widget ui-state-default ui-corner-all">
+                                                                                <div class="ui-helper-hidden-accessible">
+                                                                                    <input id="form_anonym:bestlistCategory_focus" name="form_anonym:bestlistCategory_focus" type="text" autocomplete="off" role="combobox" aria-haspopup="true" aria-expanded="false"/>
+                                                                                </div>
+                                                                                <div class="ui-helper-hidden-accessible">
+                                                                                    <select id="form_anonym:bestlistCategory_input" name="form_anonym:bestlistCategory_input" tabindex="-1" aria-hidden="true" onchange="PrimeFaces.ab({s:&quot;form_anonym:bestlistCategory&quot;,e:&quot;valueChange&quot;,p:&quot;form_anonym:bestlistCategory&quot;,u:&quot;form_anonym:bestlistSearches globalMsgs form_anonym:categoryExclusive&quot;,onco:function(xhr,status,args){doSpot();},pa:[{name:&quot;aeswindowguid&quot;,value:&quot;ba98d03b-e0c1-43a5-fd72-a05130146a60&quot;}]});">
+                                                                                        <option value="">Kategorie wählen</option>
+                                                                                        <option value="M" selected="selected">Alle Männer</option>
+                                                                                        <option value="W">Alle Frauen</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g45f-be">U10 Männer</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g45i-bf">U10 Frauen</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g45k-bg">U12 Männer</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g45m-bh">U12 Frauen</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g45o-bi">U14 Männer</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g45q-bj">U14 Frauen</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g45s-bk">U16 Männer</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g45u-bl">U16 Frauen</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g45w-bm">U18 Männer</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g45y-bn">U18 Frauen</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g45z-bo">U20 Männer</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g461-bp">U20 Frauen</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g463-bq">U23 Männer</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g465-br">U23 Frauen</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g467-bs">Männer</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g469-bt">Frauen</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g46a-bu">Masters Männer</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g46c-bv">Masters Frauen</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g46e-bw">M30 Männer</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g46g-bx">W30 Frauen</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g46i-by">M35 Männer</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g46j-bz">W35 Frauen</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g46l-c0">M40 Männer</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g46n-c1">W40 Frauen</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g46q-c2">M45 Männer</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g46s-c3">W45 Frauen</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g46t-c4">M50 Männer</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g46v-c5">W50 Frauen</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g46x-c6">M55 Männer</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g46z-c7">W55 Frauen</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g471-c8">M60 Männer</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g473-c9">W60 Frauen</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g475-ca">M65 Männer</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g477-cb">W65 Frauen</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g478-cc">M70 Männer</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g47b-cd">W70 Frauen</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g47d-ce">M75 Männer</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g47f-cf">W75 Frauen</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g47h-cg">M80 Männer</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g47j-ch">W80 Frauen</option>
+                                                                                        <option value="a21aa-xrtc86-kwkwlx5v-1-kwkwrytv-1h">U12 Mixed</option>
+                                                                                        <option value="a21aa-r5bzvz-lflc45or-1-lflcuo39-2k">U14 Mixed</option>
+                                                                                        <option value="a21aa-vz020z-ju9metop-1-ju9mhlex-5">Männer/Frauen Mixed</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                                <label id="form_anonym:bestlistCategory_label" class="ui-selectonemenu-label ui-inputfield ui-corner-all">&nbsp;</label>
+                                                                                <div class="ui-selectonemenu-trigger ui-state-default ui-corner-right">
+                                                                                    <span class="ui-icon ui-icon-triangle-1-s ui-c"></span>
+                                                                                </div>
+                                                                                <div id="form_anonym:bestlistCategory_panel" class="ui-selectonemenu-panel ui-widget ui-widget-content ui-corner-all ui-helper-hidden ui-shadow">
+                                                                                    <div class="ui-selectonemenu-items-wrapper" style="height:200px">
+                                                                                        <ul id="form_anonym:bestlistCategory_items" class="ui-selectonemenu-items ui-selectonemenu-list ui-widget-content ui-widget ui-corner-all ui-helper-reset" role="listbox">
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all ui-noselection-option" data-label="Kategorie wählen" tabindex="-1" role="option">Kategorie wählen</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Alle Männer" tabindex="-1" role="option">Alle Männer</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Alle Frauen" tabindex="-1" role="option">Alle Frauen</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="U10 Männer" tabindex="-1" role="option">U10 Männer</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="U10 Frauen" tabindex="-1" role="option">U10 Frauen</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="U12 Männer" tabindex="-1" role="option">U12 Männer</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="U12 Frauen" tabindex="-1" role="option">U12 Frauen</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="U14 Männer" tabindex="-1" role="option">U14 Männer</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="U14 Frauen" tabindex="-1" role="option">U14 Frauen</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="U16 Männer" tabindex="-1" role="option">U16 Männer</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="U16 Frauen" tabindex="-1" role="option">U16 Frauen</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="U18 Männer" tabindex="-1" role="option">U18 Männer</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="U18 Frauen" tabindex="-1" role="option">U18 Frauen</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="U20 Männer" tabindex="-1" role="option">U20 Männer</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="U20 Frauen" tabindex="-1" role="option">U20 Frauen</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="U23 Männer" tabindex="-1" role="option">U23 Männer</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="U23 Frauen" tabindex="-1" role="option">U23 Frauen</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Männer" tabindex="-1" role="option">Männer</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Frauen" tabindex="-1" role="option">Frauen</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Masters Männer" tabindex="-1" role="option">Masters Männer</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Masters Frauen" tabindex="-1" role="option">Masters Frauen</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="M30 Männer" tabindex="-1" role="option">M30 Männer</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="W30 Frauen" tabindex="-1" role="option">W30 Frauen</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="M35 Männer" tabindex="-1" role="option">M35 Männer</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="W35 Frauen" tabindex="-1" role="option">W35 Frauen</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="M40 Männer" tabindex="-1" role="option">M40 Männer</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="W40 Frauen" tabindex="-1" role="option">W40 Frauen</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="M45 Männer" tabindex="-1" role="option">M45 Männer</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="W45 Frauen" tabindex="-1" role="option">W45 Frauen</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="M50 Männer" tabindex="-1" role="option">M50 Männer</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="W50 Frauen" tabindex="-1" role="option">W50 Frauen</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="M55 Männer" tabindex="-1" role="option">M55 Männer</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="W55 Frauen" tabindex="-1" role="option">W55 Frauen</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="M60 Männer" tabindex="-1" role="option">M60 Männer</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="W60 Frauen" tabindex="-1" role="option">W60 Frauen</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="M65 Männer" tabindex="-1" role="option">M65 Männer</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="W65 Frauen" tabindex="-1" role="option">W65 Frauen</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="M70 Männer" tabindex="-1" role="option">M70 Männer</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="W70 Frauen" tabindex="-1" role="option">W70 Frauen</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="M75 Männer" tabindex="-1" role="option">M75 Männer</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="W75 Frauen" tabindex="-1" role="option">W75 Frauen</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="M80 Männer" tabindex="-1" role="option">M80 Männer</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="W80 Frauen" tabindex="-1" role="option">W80 Frauen</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="U12 Mixed" tabindex="-1" role="option">U12 Mixed</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="U14 Mixed" tabindex="-1" role="option">U14 Mixed</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Männer/Frauen Mixed" tabindex="-1" role="option">Männer/Frauen Mixed</li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <label id="form_anonym:j_idt46" class="ui-outputlabel ui-widget label">Kategorie</label>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="ui-grid-row">
+                                                                    <div class="ui-panelgrid-cell ui-grid-col-12">
+                                                                        <div id="form_anonym:j_idt47" aria-live="polite" class="ui-message"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ui-panelgrid-cell ui-grid-col-3">
+                                                        <div id="form_anonym:j_idt48" class="ui-panelgrid ui-widget form-group ui-panelgrid-blank">
+                                                            <div id="form_anonym:j_idt48_content" class="ui-panelgrid-content ui-widget-content ui-grid ui-grid-responsive">
+                                                                <div class="ui-grid-row">
+                                                                    <div class="ui-panelgrid-cell ui-grid-col-12">
+                                                                        <span class="md-selectonemenu">
+                                                                            <div id="form_anonym:bestlistDiscipline" class="ui-selectonemenu ui-widget ui-state-default ui-corner-all">
+                                                                                <div class="ui-helper-hidden-accessible">
+                                                                                    <input id="form_anonym:bestlistDiscipline_focus" name="form_anonym:bestlistDiscipline_focus" type="text" autocomplete="off" role="combobox" aria-haspopup="true" aria-expanded="false"/>
+                                                                                </div>
+                                                                                <div class="ui-helper-hidden-accessible">
+                                                                                    <select id="form_anonym:bestlistDiscipline_input" name="form_anonym:bestlistDiscipline_input" tabindex="-1" aria-hidden="true" onchange="PrimeFaces.ab({s:&quot;form_anonym:bestlistDiscipline&quot;,e:&quot;valueChange&quot;,p:&quot;form_anonym:bestlistDiscipline&quot;,u:&quot;form_anonym:bestlistSearches globalMsgs&quot;,onco:function(xhr,status,args){doSpot();},pa:[{name:&quot;aeswindowguid&quot;,value:&quot;ba98d03b-e0c1-43a5-fd72-a05130146a60&quot;}]});">
+                                                                                        <option value="">Disziplin wählen</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gc6m-1nc">50 m</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g3pt-79">60 m</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gefj-3vd">80 m</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gfpc-4zv">100 m</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986ggxt-64h">150 m</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986ghgt-6ks">200 m</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gi8s-6ls">300 m</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gihb-6m2">400 m</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gior-6mc">600 m</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gj3n-6mw">800 m</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gc86-1oz">1000 m</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gc9i-1rt">1500 m</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gcao-1rv">1 Meile</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gcbl-1rx">2000 m</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gccp-1ur">3000 m</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gcdv-1ut">5000 m</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gcf7-1xn">10 000 m</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gd8u-2qp">60 mH 84.0</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gdav-2tl">60 mH 68.6</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gdmw-357">60 mH 76.2 U16W / U14M</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gdrr-39n">60 mH 60-76.2 U12</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gdbu-2tn">80 mH 76.2</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gdhm-2zd">100 mH 84.0</option>
+                                                                                        <option value="5c4o3k5l-dpzv57-k25y71bj-1-k25ys8mp-s">100 mH 91.4</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gdlv-355">110 mH 106.7</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gdkp-32b">110 mH 99.1</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gdjp-329">110 mH 91.4</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gdt4-3b1">200 mH</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gduc-3b3">300 mH 91.4</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gdvn-3dx">300 mH 84.0</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gdwx-3dz">300 mH 76.2</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986ge0b-3gx">400 mH 91.4</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gj21-6mu">400 mH 84.0</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gcu8-2c1">2000 m Steeple</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gcvb-2c3">3000 m Steeple</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986ghc9-6fz">5x frei</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986ghdr-6it">5x80 m</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986ghf8-6iv">6x frei</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gi01-6lg">4x100 m</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gi1v-6li">4x200 m</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gi3b-6lk">4x400 m</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gi7f-6lq">3x1000 m</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gicg-6lw">Olympische</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gift-6m0">Schwedenstaffel</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gieb-6ly">Américaine</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986ge33-3jt">Hoch</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986ge47-3mn">Stab</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986ge5c-3mp" selected="selected">Weit</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986ge6o-3mr">Stabweit</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g3pw-7a">Weit Zone</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986ge8a-3pl">Drei</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986geh1-3y7">Kugel 7.26 kg</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986geaq-3sh">Kugel 6.00 kg</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986ge9l-3pn">Kugel 5.00 kg</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gebx-3sj">Kugel 4.00 kg</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986geid-3y9">Kugel 3.00 kg</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986geji-40q">Kugel 2.50 kg</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986geqw-46z">Diskus 2.00 kg</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gepb-44u">Diskus 1.75 kg</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986geo6-443">Diskus 1.50 kg</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gemx-441">Diskus 1.00 kg</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gekn-415">Drehwurf</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gelr-417">Diskus 0.75 kg</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gezg-4ct">Hammer 7.26 kg</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gexo-4cr">Hammer 6.00 kg</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gevw-49x">Hammer 5.00 kg</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986geua-49v">Hammer 4.00 kg</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gf9t-4lh">Speer 800 gr</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gf6a-4il">Speer 700 gr</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gf4o-4ij">Speer 600 gr</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gf2y-4fp">Speer 400 gr</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gf7r-4lf">Speer 500 gr</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g3py-7b">Ball 200 g</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gfb8-4ob">Fünfkampf M</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gfcn-4od">Fünfkampf U20 M</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gfxn-58j">Fünfkampf U18 M</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gg1t-5bh">Zehnkampf M</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gg38-5eb">Zehnkampf U20 M</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gg4k-5ed">Zehnkampf U18 M</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gftl-55l">Sechskampf U16 M</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986g3q0-7c">UBS Kids Cup</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gg8h-5hb">Mile walk</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986ggf8-5px">3000 m walk</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986ggoi-5vt">5000 m walk</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986ggqd-5yn">10000 m walk</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986ggzb-64j">5 km walk</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986gh2b-67f">10 km walk</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986ghal-6fx">25 km walk</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986ghiv-6ku">20 km walk</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986ghnj-6l0">30 km walk</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986ghqh-6l4">35 km walk</option>
+                                                                                        <option value="5c4o3k5m-d686mo-j986g2ie-1-j986ghto-6l8">50 km walk</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                                <label id="form_anonym:bestlistDiscipline_label" class="ui-selectonemenu-label ui-inputfield ui-corner-all">&nbsp;</label>
+                                                                                <div class="ui-selectonemenu-trigger ui-state-default ui-corner-right">
+                                                                                    <span class="ui-icon ui-icon-triangle-1-s ui-c"></span>
+                                                                                </div>
+                                                                                <div id="form_anonym:bestlistDiscipline_panel" class="ui-selectonemenu-panel ui-widget ui-widget-content ui-corner-all ui-helper-hidden ui-shadow">
+                                                                                    <div class="ui-selectonemenu-items-wrapper" style="height:200px">
+                                                                                        <ul id="form_anonym:bestlistDiscipline_items" class="ui-selectonemenu-items ui-selectonemenu-list ui-widget-content ui-widget ui-corner-all ui-helper-reset" role="listbox">
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all ui-noselection-option" data-label="Disziplin wählen" tabindex="-1" role="option">Disziplin wählen</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="50 m" tabindex="-1" role="option">50 m</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="60 m" tabindex="-1" role="option">60 m</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="80 m" tabindex="-1" role="option">80 m</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="100 m" tabindex="-1" role="option">100 m</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="150 m" tabindex="-1" role="option">150 m</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="200 m" tabindex="-1" role="option">200 m</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="300 m" tabindex="-1" role="option">300 m</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="400 m" tabindex="-1" role="option">400 m</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="600 m" tabindex="-1" role="option">600 m</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="800 m" tabindex="-1" role="option">800 m</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="1000 m" tabindex="-1" role="option">1000 m</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="1500 m" tabindex="-1" role="option">1500 m</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="1 Meile" tabindex="-1" role="option">1 Meile</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="2000 m" tabindex="-1" role="option">2000 m</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="3000 m" tabindex="-1" role="option">3000 m</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="5000 m" tabindex="-1" role="option">5000 m</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="10 000 m" tabindex="-1" role="option">10 000 m</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="60 mH 84.0" tabindex="-1" role="option">60 mH 84.0</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="60 mH 68.6" tabindex="-1" role="option">60 mH 68.6</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="60 mH 76.2 U16W / U14M" tabindex="-1" role="option">60 mH 76.2 U16W / U14M</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="60 mH 60-76.2 U12" tabindex="-1" role="option">60 mH 60-76.2 U12</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="80 mH 76.2" tabindex="-1" role="option">80 mH 76.2</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="100 mH 84.0" tabindex="-1" role="option">100 mH 84.0</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="100 mH 91.4" tabindex="-1" role="option">100 mH 91.4</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="110 mH 106.7" tabindex="-1" role="option">110 mH 106.7</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="110 mH 99.1" tabindex="-1" role="option">110 mH 99.1</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="110 mH 91.4" tabindex="-1" role="option">110 mH 91.4</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="200 mH" tabindex="-1" role="option">200 mH</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="300 mH 91.4" tabindex="-1" role="option">300 mH 91.4</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="300 mH 84.0" tabindex="-1" role="option">300 mH 84.0</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="300 mH 76.2" tabindex="-1" role="option">300 mH 76.2</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="400 mH 91.4" tabindex="-1" role="option">400 mH 91.4</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="400 mH 84.0" tabindex="-1" role="option">400 mH 84.0</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="2000 m Steeple" tabindex="-1" role="option">2000 m Steeple</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="3000 m Steeple" tabindex="-1" role="option">3000 m Steeple</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="5x frei" tabindex="-1" role="option">5x frei</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="5x80 m" tabindex="-1" role="option">5x80 m</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="6x frei" tabindex="-1" role="option">6x frei</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="4x100 m" tabindex="-1" role="option">4x100 m</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="4x200 m" tabindex="-1" role="option">4x200 m</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="4x400 m" tabindex="-1" role="option">4x400 m</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="3x1000 m" tabindex="-1" role="option">3x1000 m</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Olympische" tabindex="-1" role="option">Olympische</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Schwedenstaffel" tabindex="-1" role="option">Schwedenstaffel</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Américaine" tabindex="-1" role="option">Américaine</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Hoch" tabindex="-1" role="option">Hoch</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Stab" tabindex="-1" role="option">Stab</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Weit" tabindex="-1" role="option">Weit</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Stabweit" tabindex="-1" role="option">Stabweit</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Weit Zone" tabindex="-1" role="option">Weit Zone</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Drei" tabindex="-1" role="option">Drei</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Kugel 7.26 kg" tabindex="-1" role="option">Kugel 7.26 kg</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Kugel 6.00 kg" tabindex="-1" role="option">Kugel 6.00 kg</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Kugel 5.00 kg" tabindex="-1" role="option">Kugel 5.00 kg</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Kugel 4.00 kg" tabindex="-1" role="option">Kugel 4.00 kg</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Kugel 3.00 kg" tabindex="-1" role="option">Kugel 3.00 kg</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Kugel 2.50 kg" tabindex="-1" role="option">Kugel 2.50 kg</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Diskus 2.00 kg" tabindex="-1" role="option">Diskus 2.00 kg</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Diskus 1.75 kg" tabindex="-1" role="option">Diskus 1.75 kg</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Diskus 1.50 kg" tabindex="-1" role="option">Diskus 1.50 kg</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Diskus 1.00 kg" tabindex="-1" role="option">Diskus 1.00 kg</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Drehwurf" tabindex="-1" role="option">Drehwurf</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Diskus 0.75 kg" tabindex="-1" role="option">Diskus 0.75 kg</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Hammer 7.26 kg" tabindex="-1" role="option">Hammer 7.26 kg</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Hammer 6.00 kg" tabindex="-1" role="option">Hammer 6.00 kg</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Hammer 5.00 kg" tabindex="-1" role="option">Hammer 5.00 kg</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Hammer 4.00 kg" tabindex="-1" role="option">Hammer 4.00 kg</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Speer 800 gr" tabindex="-1" role="option">Speer 800 gr</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Speer 700 gr" tabindex="-1" role="option">Speer 700 gr</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Speer 600 gr" tabindex="-1" role="option">Speer 600 gr</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Speer 400 gr" tabindex="-1" role="option">Speer 400 gr</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Speer 500 gr" tabindex="-1" role="option">Speer 500 gr</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Ball 200 g" tabindex="-1" role="option">Ball 200 g</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Fünfkampf M" tabindex="-1" role="option">Fünfkampf M</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Fünfkampf U20 M" tabindex="-1" role="option">Fünfkampf U20 M</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Fünfkampf U18 M" tabindex="-1" role="option">Fünfkampf U18 M</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Zehnkampf M" tabindex="-1" role="option">Zehnkampf M</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Zehnkampf U20 M" tabindex="-1" role="option">Zehnkampf U20 M</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Zehnkampf U18 M" tabindex="-1" role="option">Zehnkampf U18 M</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Sechskampf U16 M" tabindex="-1" role="option">Sechskampf U16 M</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="UBS Kids Cup" tabindex="-1" role="option">UBS Kids Cup</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Mile walk" tabindex="-1" role="option">Mile walk</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="3000 m walk" tabindex="-1" role="option">3000 m walk</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="5000 m walk" tabindex="-1" role="option">5000 m walk</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="10000 m walk" tabindex="-1" role="option">10000 m walk</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="5 km walk" tabindex="-1" role="option">5 km walk</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="10 km walk" tabindex="-1" role="option">10 km walk</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="25 km walk" tabindex="-1" role="option">25 km walk</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="20 km walk" tabindex="-1" role="option">20 km walk</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="30 km walk" tabindex="-1" role="option">30 km walk</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="35 km walk" tabindex="-1" role="option">35 km walk</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="50 km walk" tabindex="-1" role="option">50 km walk</li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <label id="form_anonym:j_idt52" class="ui-outputlabel ui-widget label">Disziplin</label>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="ui-grid-row">
+                                                                    <div class="ui-panelgrid-cell ui-grid-col-12">
+                                                                        <div id="form_anonym:j_idt53" aria-live="polite" class="ui-message"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="ui-grid-row">
+                                                    <div class="ui-panelgrid-cell ui-grid-col-3">
+                                                        <div id="form_anonym:j_idt54" class="ui-panelgrid ui-widget form-group ui-panelgrid-blank">
+                                                            <div id="form_anonym:j_idt54_content" class="ui-panelgrid-content ui-widget-content ui-grid ui-grid-responsive">
+                                                                <div class="ui-grid-row">
+                                                                    <div class="ui-panelgrid-cell ui-grid-col-12">
+                                                                        <span class="md-selectonemenu">
+                                                                            <div id="form_anonym:bestlistType" class="ui-selectonemenu ui-widget ui-state-default ui-corner-all">
+                                                                                <div class="ui-helper-hidden-accessible">
+                                                                                    <input id="form_anonym:bestlistType_focus" name="form_anonym:bestlistType_focus" type="text" autocomplete="off" role="combobox" aria-haspopup="true" aria-expanded="false"/>
+                                                                                </div>
+                                                                                <div class="ui-helper-hidden-accessible">
+                                                                                    <select id="form_anonym:bestlistType_input" name="form_anonym:bestlistType_input" tabindex="-1" aria-hidden="true" onchange="PrimeFaces.ab({s:&quot;form_anonym:bestlistType&quot;,e:&quot;valueChange&quot;,p:&quot;form_anonym:bestlistType&quot;,u:&quot;form_anonym:bestlistSearches globalMsgs&quot;,onco:function(xhr,status,args){doSpot();},pa:[{name:&quot;aeswindowguid&quot;,value:&quot;ba98d03b-e0c1-43a5-fd72-a05130146a60&quot;}]});">
+                                                                                        <option value="0" selected="selected">Alle Resultate</option>
+                                                                                        <option value="1">Ein Resultat pro Athlet</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                                <label id="form_anonym:bestlistType_label" class="ui-selectonemenu-label ui-inputfield ui-corner-all">&nbsp;</label>
+                                                                                <div class="ui-selectonemenu-trigger ui-state-default ui-corner-right">
+                                                                                    <span class="ui-icon ui-icon-triangle-1-s ui-c"></span>
+                                                                                </div>
+                                                                                <div id="form_anonym:bestlistType_panel" class="ui-selectonemenu-panel ui-widget ui-widget-content ui-corner-all ui-helper-hidden ui-shadow">
+                                                                                    <div class="ui-selectonemenu-items-wrapper" style="height:auto">
+                                                                                        <ul id="form_anonym:bestlistType_items" class="ui-selectonemenu-items ui-selectonemenu-list ui-widget-content ui-widget ui-corner-all ui-helper-reset" role="listbox">
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Alle Resultate" tabindex="-1" role="option">Alle Resultate</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Ein Resultat pro Athlet" tabindex="-1" role="option">Ein Resultat pro Athlet</li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <label id="form_anonym:j_idt58" class="ui-outputlabel ui-widget label">Typ der Liste</label>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="ui-grid-row">
+                                                                    <div class="ui-panelgrid-cell ui-grid-col-12">
+                                                                        <div id="form_anonym:j_idt59" aria-live="polite" class="ui-message"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ui-panelgrid-cell ui-grid-col-3">
+                                                        <div id="form_anonym:j_idt60" class="ui-panelgrid ui-widget form-group ui-panelgrid-blank">
+                                                            <div id="form_anonym:j_idt60_content" class="ui-panelgrid-content ui-widget-content ui-grid ui-grid-responsive">
+                                                                <div class="ui-grid-row">
+                                                                    <div class="ui-panelgrid-cell ui-grid-col-12">
+                                                                        <span class="md-selectonemenu">
+                                                                            <div id="form_anonym:bestlistTops" class="ui-selectonemenu ui-widget ui-state-default ui-corner-all">
+                                                                                <div class="ui-helper-hidden-accessible">
+                                                                                    <input id="form_anonym:bestlistTops_focus" name="form_anonym:bestlistTops_focus" type="text" autocomplete="off" role="combobox" aria-haspopup="true" aria-expanded="false"/>
+                                                                                </div>
+                                                                                <div class="ui-helper-hidden-accessible">
+                                                                                    <select id="form_anonym:bestlistTops_input" name="form_anonym:bestlistTops_input" tabindex="-1" aria-hidden="true" onchange="PrimeFaces.ab({s:&quot;form_anonym:bestlistTops&quot;,e:&quot;valueChange&quot;,p:&quot;form_anonym:bestlistTops&quot;,u:&quot;form_anonym:bestlistSearches globalMsgs&quot;,onco:function(xhr,status,args){doSpot();},pa:[{name:&quot;aeswindowguid&quot;,value:&quot;ba98d03b-e0c1-43a5-fd72-a05130146a60&quot;}]});">
+                                                                                        <option value="10">10</option>
+                                                                                        <option value="30" selected="selected">30</option>
+                                                                                        <option value="100">100</option>
+                                                                                        <option value="500">500</option>
+                                                                                        <option value="5000">5000</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                                <label id="form_anonym:bestlistTops_label" class="ui-selectonemenu-label ui-inputfield ui-corner-all">&nbsp;</label>
+                                                                                <div class="ui-selectonemenu-trigger ui-state-default ui-corner-right">
+                                                                                    <span class="ui-icon ui-icon-triangle-1-s ui-c"></span>
+                                                                                </div>
+                                                                                <div id="form_anonym:bestlistTops_panel" class="ui-selectonemenu-panel ui-widget ui-widget-content ui-corner-all ui-helper-hidden ui-shadow">
+                                                                                    <div class="ui-selectonemenu-items-wrapper" style="height:auto">
+                                                                                        <ul id="form_anonym:bestlistTops_items" class="ui-selectonemenu-items ui-selectonemenu-list ui-widget-content ui-widget ui-corner-all ui-helper-reset" role="listbox">
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="10" tabindex="-1" role="option">10</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="30" tabindex="-1" role="option">30</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="100" tabindex="-1" role="option">100</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="500" tabindex="-1" role="option">500</li>
+                                                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="5000" tabindex="-1" role="option">5000</li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <label id="form_anonym:j_idt63" class="ui-outputlabel ui-widget label">Maximale Anzahl Resultate</label>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="ui-grid-row">
+                                                                    <div class="ui-panelgrid-cell ui-grid-col-12">
+                                                                        <div id="form_anonym:j_idt64" aria-live="polite" class="ui-message"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ui-panelgrid-cell ui-grid-col-3">
+                                                        <div id="form_anonym:j_idt65" class="ui-panelgrid ui-widget form-group ui-panelgrid-blank">
+                                                            <div id="form_anonym:j_idt65_content" class="ui-panelgrid-content ui-widget-content ui-grid ui-grid-responsive">
+                                                                <div class="ui-grid-row">
+                                                                    <div class="ui-panelgrid-cell ui-grid-col-12">
+                                                                        <span class="md-selectonemenu">
+                                                                            <div id="form_anonym:categoryExclusive" class="ui-chkbox ui-widget">
+                                                                                <div class="ui-helper-hidden-accessible">
+                                                                                    <input id="form_anonym:categoryExclusive_input" name="form_anonym:categoryExclusive_input" type="checkbox" autocomplete="off" aria-checked="false" disabled="disabled" onchange="PrimeFaces.ab({s:&quot;form_anonym:categoryExclusive&quot;,e:&quot;valueChange&quot;,p:&quot;form_anonym:categoryExclusive&quot;,u:&quot;form_anonym:bestlistSearches globalMsgs&quot;,onco:function(xhr,status,args){doSpot();},pa:[{name:&quot;aeswindowguid&quot;,value:&quot;ba98d03b-e0c1-43a5-fd72-a05130146a60&quot;}]});"/>
+                                                                                </div>
+                                                                                <div class="ui-chkbox-box ui-widget ui-corner-all ui-state-default ui-state-disabled">
+                                                                                    <span class="ui-chkbox-icon ui-icon ui-icon-blank ui-c"></span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <label id="form_anonym:j_idt67" class="ui-outputlabel ui-widget label" for="form_anonym:categoryExclusive_input">Nur Athleten dieser Kategorie</label>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="ui-grid-row">
+                                                                    <div class="ui-panelgrid-cell ui-grid-col-12">
+                                                                        <div id="form_anonym:j_idt68" aria-live="polite" class="ui-message"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ui-panelgrid-cell ui-grid-col-3">
+                                                        <div id="form_anonym:j_idt69" class="ui-panelgrid ui-widget form-group ui-panelgrid-blank no-print">
+                                                            <div id="form_anonym:j_idt69_content" class="ui-panelgrid-content ui-widget-content ui-grid ui-grid-responsive">
+                                                                <div class="ui-grid-row">
+                                                                    <div class="ui-panelgrid-cell ui-grid-col-12">
+                                                                        <span class="md-selectonemenu">
+                                                                            <div id="form_anonym:bestlistOnlyHomoglate" class="ui-chkbox ui-widget">
+                                                                                <div class="ui-helper-hidden-accessible">
+                                                                                    <input id="form_anonym:bestlistOnlyHomoglate_input" name="form_anonym:bestlistOnlyHomoglate_input" type="checkbox" autocomplete="off" aria-checked="false" onchange="PrimeFaces.ab({s:&quot;form_anonym:bestlistOnlyHomoglate&quot;,e:&quot;valueChange&quot;,p:&quot;form_anonym:bestlistOnlyHomoglate&quot;,u:&quot;form_anonym:bestlistSearches globalMsgs&quot;,onco:function(xhr,status,args){doSpot();},pa:[{name:&quot;aeswindowguid&quot;,value:&quot;ba98d03b-e0c1-43a5-fd72-a05130146a60&quot;}]});"/>
+                                                                                </div>
+                                                                                <div class="ui-chkbox-box ui-widget ui-corner-all ui-state-default">
+                                                                                    <span class="ui-chkbox-icon ui-icon ui-icon-blank ui-c"></span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <label id="form_anonym:j_idt71" class="ui-outputlabel ui-widget label" for="form_anonym:bestlistOnlyHomoglate_input">nur homologierte Resultate anzeigen</label>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="ui-grid-row">
+                                                    <div class="ui-panelgrid-cell ui-grid-col-3">
+                                                        <div id="form_anonym:j_idt72" class="ui-panelgrid ui-widget form-group ui-panelgrid-blank">
+                                                            <div id="form_anonym:j_idt72_content" class="ui-panelgrid-content ui-widget-content ui-grid ui-grid-responsive">
+                                                                <div class="ui-grid-row">
+                                                                    <div class="ui-panelgrid-cell ui-grid-col-12">
+                                                                        <span class="md-selectonemenu">
+                                                                            <div id="form_anonym:bestlistWind" class="ui-chkbox ui-widget">
+                                                                                <div class="ui-helper-hidden-accessible">
+                                                                                    <input id="form_anonym:bestlistWind_input" name="form_anonym:bestlistWind_input" type="checkbox" autocomplete="off" checked="checked" aria-checked="true" onchange="PrimeFaces.ab({s:&quot;form_anonym:bestlistWind&quot;,e:&quot;valueChange&quot;,p:&quot;form_anonym:bestlistWind&quot;,u:&quot;form_anonym:bestlistSearches globalMsgs&quot;,onco:function(xhr,status,args){doSpot();},pa:[{name:&quot;aeswindowguid&quot;,value:&quot;ba98d03b-e0c1-43a5-fd72-a05130146a60&quot;}]});"/>
+                                                                                </div>
+                                                                                <div class="ui-chkbox-box ui-widget ui-corner-all ui-state-default ui-state-active">
+                                                                                    <span class="ui-chkbox-icon ui-icon ui-icon-check ui-c"></span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <label id="form_anonym:j_idt74" class="ui-outputlabel ui-widget label" for="form_anonym:bestlistWind_input">Resultate mit zu viel Wind anzeigen</label>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="ui-grid-row">
+                                                                    <div class="ui-panelgrid-cell ui-grid-col-12">
+                                                                        <div id="form_anonym:j_idt75" aria-live="polite" class="ui-message"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ui-panelgrid-cell ui-grid-col-3">
+                                                        <div id="form_anonym:j_idt76" class="ui-panelgrid ui-widget form-group ui-panelgrid-blank no-print">
+                                                            <div id="form_anonym:j_idt76_content" class="ui-panelgrid-content ui-widget-content ui-grid ui-grid-responsive">
+                                                                <div class="ui-grid-row">
+                                                                    <div class="ui-panelgrid-cell ui-grid-col-12">
+                                                                        <button id="form_anonym:j_idt77" name="form_anonym:j_idt77" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only actionButton" onclick="PrimeFaces.bcn(this,event,[function(event){printBestlist(); return false;},function(event){PrimeFaces.addSubmitParam('form_anonym',{'aeswindowguid':'ba98d03b-e0c1-43a5-fd72-a05130146a60'});PrimeFaces.onPost();}]);" title="Bestenliste drucken" type="submit">
+                                                                            <span class="ui-button-icon-left ui-icon ui-c fa fa-print"></span>
+                                                                            <span class="ui-button-text ui-c">Bestenliste drucken</span>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="no-print">
+                                            <div style="width: 100%; text-align: right; margin-bottom: 10px;"></div>
+                                            <button id="form_anonym:loadDataBtn" name="form_anonym:loadDataBtn" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" onclick="PrimeFaces.bcn(this,event,[function(event){openURLForBestlist('https://www.swiss-athletics.ch/de/startseite-bestenliste-neu?&amp;mobile=false&amp;blyear=2023&amp;blcat=M&amp;disci=5c4o3k5m-d686mo-j986g2ie-1-j986ge5c-3mp&amp;top=30&amp;sw=1'); return false;},function(event){PrimeFaces.addSubmitParam('form_anonym',{'aeswindowguid':'ba98d03b-e0c1-43a5-fd72-a05130146a60'});PrimeFaces.onPost();}]);" type="submit">
+                                                <span class="ui-button-text ui-c">Anzeigen</span>
+                                            </button>
+                                            <span id="form_anonym:spot"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="text-align: center;"></div>
+                        </div>
+                        <div id="form_anonym:j_idt88" class="ui-datatable ui-widget ui-datatable-reflow" style="margin-left: 10px; margin-right: 10px; margin-bottom: 10px;">
+                            <div class="ui-datatable-tablewrapper">
+                                <table role="grid">
+                                    <thead id="form_anonym:j_idt88_head">
+                                        <tr role="row">
+                                            <th id="form_anonym:j_idt88:j_idt89" class="ui-state-default" role="columnheader" aria-label="Nr" scope="col" style="width:3%">
+                                                <span class="ui-column-title">Nr</span>
+                                            </th>
+                                            <th id="form_anonym:j_idt88:j_idt91" class="ui-state-default" role="columnheader" aria-label="Resultat" scope="col" style="width:8%">
+                                                <span class="ui-column-title">Resultat</span>
+                                            </th>
+                                            <th id="form_anonym:j_idt88:j_idt98" class="ui-state-default" role="columnheader" aria-label="Wind" scope="col" style="width:4%">
+                                                <span class="ui-column-title">Wind</span>
+                                            </th>
+                                            <th id="form_anonym:j_idt88:j_idt101" class="ui-state-default" role="columnheader" aria-label="Rang" scope="col" style="width:4%">
+                                                <span class="ui-column-title">Rang</span>
+                                            </th>
+                                            <th id="form_anonym:j_idt88:j_idt105" class="ui-state-default" role="columnheader" aria-label="Name" scope="col">
+                                                <span class="ui-column-title">Name</span>
+                                            </th>
+                                            <th id="form_anonym:j_idt88:j_idt111" class="ui-state-default" role="columnheader" aria-label="Verein" scope="col">
+                                                <span class="ui-column-title">Verein</span>
+                                            </th>
+                                            <th id="form_anonym:j_idt88:j_idt113" class="ui-state-default" role="columnheader" aria-label="Nat." scope="col" style="width:5%">
+                                                <span class="ui-column-title">Nat.</span>
+                                            </th>
+                                            <th id="form_anonym:j_idt88:j_idt115" class="ui-state-default" role="columnheader" aria-label="Geb. Dat." scope="col" style="width:9%">
+                                                <span class="ui-column-title">Geb. Dat.</span>
+                                            </th>
+                                            <th id="form_anonym:j_idt88:j_idt119" class="ui-state-default" role="columnheader" aria-label="Wettkampf" scope="col">
+                                                <span class="ui-column-title">Wettkampf</span>
+                                            </th>
+                                            <th id="form_anonym:j_idt88:j_idt123" class="ui-state-default" role="columnheader" aria-label="Ort" scope="col" style="width:9%">
+                                                <span class="ui-column-title">Ort</span>
+                                            </th>
+                                            <th id="form_anonym:j_idt88:j_idt125" class="ui-state-default" role="columnheader" aria-label="Datum" scope="col" style="width:9%">
+                                                <span class="ui-column-title">Datum</span>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="form_anonym:j_idt88_data" class="ui-datatable-data ui-widget-content">
+                                        <tr data-ri="0" class="ui-widget-content ui-datatable-even" role="row">
+                                            <td role="gridcell">1</td>
+                                            <td role="gridcell">
+                                                <span id="form_anonym:j_idt88:0:resultValue">8.32_SR</span>
+                                            </td>
+                                            <td role="gridcell">0.0</td>
+                                            <td role="gridcell">1f1</td>
+                                            <td role="gridcell">
+                                                <a id="form_anonym:j_idt88:0:athlNameLink" href="#" class="ui-commandlink ui-widget" onclick="openURLForBestlist('https://www.swiss-athletics.ch/de/einzelner-athlet-bestenliste-neu?&amp;mobile=false&amp;blyear=2023&amp;con=CONTACT.WEB.131887&amp;blcat=M&amp;disci=5c4o3k5m-d686mo-j986g2ie-1-j986ge5c-3mp&amp;top=30&amp;srb=0&amp;sw=1'); return false;;PrimeFaces.addSubmitParam('form_anonym',{'form_anonym:j_idt88:0:athlNameLink':'form_anonym:j_idt88:0:athlNameLink','aeswindowguid':'ba98d03b-e0c1-43a5-fd72-a05130146a60'}).submit('form_anonym');return false;PrimeFaces.onPost();">Tester_1</a>
+                                            </td>
+                                            <td role="gridcell">
+                                                <a id="form_anonym:j_idt88:0:j_idt112" href="#" class="ui-commandlink ui-widget" onclick="openURLForBestlist('https://www.swiss-athletics.ch/de/verein-bestenliste-neu?&amp;mobile=false&amp;blyear=2023&amp;acc=ACC_1.SGALV.1011&amp;blcat=M&amp;disci=5c4o3k5m-d686mo-j986g2ie-1-j986ge5c-3mp&amp;top=30&amp;sw=1'); return false;;PrimeFaces.addSubmitParam('form_anonym',{'form_anonym:j_idt88:0:j_idt112':'form_anonym:j_idt88:0:j_idt112','aeswindowguid':'ba98d03b-e0c1-43a5-fd72-a05130146a60'}).submit('form_anonym');return false;PrimeFaces.onPost();">Club_1</a>
+                                            </td>
+                                            <td role="gridcell">GER</td>
+                                            <td role="gridcell">01.05.1998</td>
+                                            <td role="gridcell">
+                                                <a id="form_anonym:j_idt88:0:j_idt120" href="#" class="ui-commandlink ui-widget" onclick="openURLForBestlist('https://www.swiss-athletics.ch/de/wettkampf-bestenliste-neu?&amp;mobile=false&amp;blyear=2023&amp;evt=a21aa-6dqfqu-lik5k1lr-1-liy58dcw-4w2&amp;blcat=M&amp;disci=5c4o3k5m-d686mo-j986g2ie-1-j986ge5c-3mp&amp;top=30&amp;sw=1'); return false;;PrimeFaces.addSubmitParam('form_anonym',{'aeswindowguid':'ba98d03b-e0c1-43a5-fd72-a05130146a60','form_anonym:j_idt88:0:j_idt120':'form_anonym:j_idt88:0:j_idt120'}).submit('form_anonym');return false;PrimeFaces.onPost();">Event_1</a>
+                                            </td>
+                                            <td role="gridcell">Loc1</td>
+                                            <td role="gridcell">01.08.2022</td>
+                                        </tr>
+                                        <tr data-ri="1" class="ui-widget-content ui-datatable-odd" role="row">
+                                            <td role="gridcell">2</td>
+                                            <td role="gridcell">
+                                                <span id="form_anonym:j_idt88:1:resultValue">8.22</span>
+                                            </td>
+                                            <td role="gridcell">0.0</td>
+                                            <td role="gridcell"></td>
+                                            <td role="gridcell">
+                                                <a id="form_anonym:j_idt88:1:athlNameLink" href="#" class="ui-commandlink ui-widget" onclick="openURLForBestlist('https://www.swiss-athletics.ch/de/einzelner-athlet-bestenliste-neu?&amp;mobile=false&amp;blyear=2023&amp;con=CONTACT.WEB.131887&amp;blcat=M&amp;disci=5c4o3k5m-d686mo-j986g2ie-1-j986ge5c-3mp&amp;top=30&amp;srb=0&amp;sw=1'); return false;;PrimeFaces.addSubmitParam('form_anonym',{'form_anonym:j_idt88:1:athlNameLink':'form_anonym:j_idt88:1:athlNameLink','aeswindowguid':'ba98d03b-e0c1-43a5-fd72-a05130146a60'}).submit('form_anonym');return false;PrimeFaces.onPost();">Tester_2</a>
+                                            </td>
+                                            <td role="gridcell">
+                                                <a id="form_anonym:j_idt88:1:j_idt112" href="#" class="ui-commandlink ui-widget" onclick="openURLForBestlist('https://www.swiss-athletics.ch/de/verein-bestenliste-neu?&amp;mobile=false&amp;blyear=2023&amp;acc=ACC_1.SGALV.1011&amp;blcat=M&amp;disci=5c4o3k5m-d686mo-j986g2ie-1-j986ge5c-3mp&amp;top=30&amp;sw=1'); return false;;PrimeFaces.addSubmitParam('form_anonym',{'form_anonym:j_idt88:1:j_idt112':'form_anonym:j_idt88:1:j_idt112','aeswindowguid':'ba98d03b-e0c1-43a5-fd72-a05130146a60'}).submit('form_anonym');return false;PrimeFaces.onPost();">Club_2</a>
+                                            </td>
+                                            <td role="gridcell">SUI</td>
+                                            <td role="gridcell">02.05.1998</td>
+                                            <td role="gridcell">
+                                                <a id="form_anonym:j_idt88:1:j_idt120" href="#" class="ui-commandlink ui-widget" onclick="openURLForBestlist('https://www.swiss-athletics.ch/de/wettkampf-bestenliste-neu?&amp;mobile=false&amp;blyear=2023&amp;evt=a21aa-bo4orw-lmohe2n4-1-lmqeq53i-178&amp;blcat=M&amp;disci=5c4o3k5m-d686mo-j986g2ie-1-j986ge5c-3mp&amp;top=30&amp;sw=1'); return false;;PrimeFaces.addSubmitParam('form_anonym',{'form_anonym:j_idt88:1:j_idt120':'form_anonym:j_idt88:1:j_idt120','aeswindowguid':'ba98d03b-e0c1-43a5-fd72-a05130146a60'}).submit('form_anonym');return false;PrimeFaces.onPost();">Event_2</a>
+                                            </td>
+                                            <td role="gridcell">Loc2</td>
+                                            <td role="gridcell">02.08.2022</td>
+                                        </tr>
+                                        <tr data-ri="2" class="ui-widget-content ui-datatable-even" role="row">
+                                            <td role="gridcell">3</td>
+                                            <td role="gridcell">
+                                                <span id="form_anonym:j_idt88:2:resultValue">8.19</span>
+                                            </td>
+                                            <td role="gridcell">-0.3</td>
+                                            <td role="gridcell">1D1</td>
+                                            <td role="gridcell">
+                                                <a id="form_anonym:j_idt88:2:athlNameLink" href="#" class="ui-commandlink ui-widget" onclick="openURLForBestlist('https://www.swiss-athletics.ch/de/einzelner-athlet-bestenliste-neu?&amp;mobile=false&amp;blyear=2023&amp;con=CONTACT.WEB.131887&amp;blcat=M&amp;disci=5c4o3k5m-d686mo-j986g2ie-1-j986ge5c-3mp&amp;top=30&amp;srb=0&amp;sw=1'); return false;;PrimeFaces.addSubmitParam('form_anonym',{'form_anonym:j_idt88:2:athlNameLink':'form_anonym:j_idt88:2:athlNameLink','aeswindowguid':'ba98d03b-e0c1-43a5-fd72-a05130146a60'}).submit('form_anonym');return false;PrimeFaces.onPost();">Tester_3</a>
+                                            </td>
+                                            <td role="gridcell">
+                                                <a id="form_anonym:j_idt88:2:j_idt112" href="#" class="ui-commandlink ui-widget" onclick="openURLForBestlist('https://www.swiss-athletics.ch/de/verein-bestenliste-neu?&amp;mobile=false&amp;blyear=2023&amp;acc=ACC_1.SGALV.1011&amp;blcat=M&amp;disci=5c4o3k5m-d686mo-j986g2ie-1-j986ge5c-3mp&amp;top=30&amp;sw=1'); return false;;PrimeFaces.addSubmitParam('form_anonym',{'form_anonym:j_idt88:2:j_idt112':'form_anonym:j_idt88:2:j_idt112','aeswindowguid':'ba98d03b-e0c1-43a5-fd72-a05130146a60'}).submit('form_anonym');return false;PrimeFaces.onPost();">Club_3</a>
+                                            </td>
+                                            <td role="gridcell">SUI</td>
+                                            <td role="gridcell">03.05.1998</td>
+                                            <td role="gridcell">
+                                                <a id="form_anonym:j_idt88:2:j_idt120" href="#" class="ui-commandlink ui-widget" onclick="openURLForBestlist('https://www.swiss-athletics.ch/de/wettkampf-bestenliste-neu?&amp;mobile=false&amp;blyear=2023&amp;evt=a21aa-vh5dlf-lflc2526-1-lftcapgq-fua&amp;blcat=M&amp;disci=5c4o3k5m-d686mo-j986g2ie-1-j986ge5c-3mp&amp;top=30&amp;sw=1'); return false;;PrimeFaces.addSubmitParam('form_anonym',{'aeswindowguid':'ba98d03b-e0c1-43a5-fd72-a05130146a60','form_anonym:j_idt88:2:j_idt120':'form_anonym:j_idt88:2:j_idt120'}).submit('form_anonym');return false;PrimeFaces.onPost();">Event_3</a>
+                                            </td>
+                                            <td role="gridcell">Loc3</td>
+                                            <td role="gridcell">03.08.2022</td>
+                                        </tr>
+                                        <tr data-ri="3" class="ui-widget-content ui-datatable-odd" role="row">
+                                            <td role="gridcell">4</td>
+                                            <td role="gridcell">
+                                                <span id="form_anonym:j_idt88:3:resultValue">8.13</span>
+                                            </td>
+                                            <td role="gridcell">-0.3</td>
+                                            <td role="gridcell">3q2</td>
+                                            <td role="gridcell">
+                                                <a id="form_anonym:j_idt88:3:athlNameLink" href="#" class="ui-commandlink ui-widget" onclick="openURLForBestlist('https://www.swiss-athletics.ch/de/einzelner-athlet-bestenliste-neu?&amp;mobile=false&amp;blyear=2023&amp;con=CONTACT.WEB.131887&amp;blcat=M&amp;disci=5c4o3k5m-d686mo-j986g2ie-1-j986ge5c-3mp&amp;top=30&amp;srb=0&amp;sw=1'); return false;;PrimeFaces.addSubmitParam('form_anonym',{'form_anonym:j_idt88:3:athlNameLink':'form_anonym:j_idt88:3:athlNameLink','aeswindowguid':'ba98d03b-e0c1-43a5-fd72-a05130146a60'}).submit('form_anonym');return false;PrimeFaces.onPost();">Tester_4</a>
+                                            </td>
+                                            <td role="gridcell">
+                                                <a id="form_anonym:j_idt88:3:j_idt112" href="#" class="ui-commandlink ui-widget" onclick="openURLForBestlist('https://www.swiss-athletics.ch/de/verein-bestenliste-neu?&amp;mobile=false&amp;blyear=2023&amp;acc=ACC_1.SGALV.1011&amp;blcat=M&amp;disci=5c4o3k5m-d686mo-j986g2ie-1-j986ge5c-3mp&amp;top=30&amp;sw=1'); return false;;PrimeFaces.addSubmitParam('form_anonym',{'form_anonym:j_idt88:3:j_idt112':'form_anonym:j_idt88:3:j_idt112','aeswindowguid':'ba98d03b-e0c1-43a5-fd72-a05130146a60'}).submit('form_anonym');return false;PrimeFaces.onPost();">Club_4</a>
+                                            </td>
+                                            <td role="gridcell">SUI</td>
+                                            <td role="gridcell">04.05.1998</td>
+                                            <td role="gridcell">
+                                                <a id="form_anonym:j_idt88:3:j_idt120" href="#" class="ui-commandlink ui-widget" onclick="openURLForBestlist('https://www.swiss-athletics.ch/de/wettkampf-bestenliste-neu?&amp;mobile=false&amp;blyear=2023&amp;evt=a21aa-kipx9y-lldm7ywe-1-llkgw12q-1de&amp;blcat=M&amp;disci=5c4o3k5m-d686mo-j986g2ie-1-j986ge5c-3mp&amp;top=30&amp;sw=1'); return false;;PrimeFaces.addSubmitParam('form_anonym',{'form_anonym:j_idt88:3:j_idt120':'form_anonym:j_idt88:3:j_idt120','aeswindowguid':'ba98d03b-e0c1-43a5-fd72-a05130146a60'}).submit('form_anonym');return false;PrimeFaces.onPost();">Event_4</a>
+                                            </td>
+                                            <td role="gridcell">Loc4</td>
+                                            <td role="gridcell">04.08.2022</td>
+                                        </tr>
+                                        <tr data-ri="4" class="ui-widget-content ui-datatable-even" role="row">
+                                            <td role="gridcell">5</td>
+                                            <td role="gridcell">
+                                                <span id="form_anonym:j_idt88:4:resultValue">8.12</span>
+                                            </td>
+                                            <td role="gridcell">0.0</td>
+                                            <td role="gridcell">1f1</td>
+                                            <td role="gridcell">
+                                                <a id="form_anonym:j_idt88:4:athlNameLink" href="#" class="ui-commandlink ui-widget" onclick="openURLForBestlist('https://www.swiss-athletics.ch/de/einzelner-athlet-bestenliste-neu?&amp;mobile=false&amp;blyear=2023&amp;con=CONTACT.WEB.131887&amp;blcat=M&amp;disci=5c4o3k5m-d686mo-j986g2ie-1-j986ge5c-3mp&amp;top=30&amp;srb=0&amp;sw=1'); return false;;PrimeFaces.addSubmitParam('form_anonym',{'aeswindowguid':'ba98d03b-e0c1-43a5-fd72-a05130146a60','form_anonym:j_idt88:4:athlNameLink':'form_anonym:j_idt88:4:athlNameLink'}).submit('form_anonym');return false;PrimeFaces.onPost();">Tester_5</a>
+                                            </td>
+                                            <td role="gridcell">
+                                                <a id="form_anonym:j_idt88:4:j_idt112" href="#" class="ui-commandlink ui-widget" onclick="openURLForBestlist('https://www.swiss-athletics.ch/de/verein-bestenliste-neu?&amp;mobile=false&amp;blyear=2023&amp;acc=ACC_1.SGALV.1011&amp;blcat=M&amp;disci=5c4o3k5m-d686mo-j986g2ie-1-j986ge5c-3mp&amp;top=30&amp;sw=1'); return false;;PrimeFaces.addSubmitParam('form_anonym',{'form_anonym:j_idt88:4:j_idt112':'form_anonym:j_idt88:4:j_idt112','aeswindowguid':'ba98d03b-e0c1-43a5-fd72-a05130146a60'}).submit('form_anonym');return false;PrimeFaces.onPost();">Club_5</a>
+                                            </td>
+                                            <td role="gridcell">SUI</td>
+                                            <td role="gridcell">05.05.1998</td>
+                                            <td role="gridcell">
+                                                <a id="form_anonym:j_idt88:4:j_idt120" href="#" class="ui-commandlink ui-widget" onclick="openURLForBestlist('https://www.swiss-athletics.ch/de/wettkampf-bestenliste-neu?&amp;mobile=false&amp;blyear=2023&amp;evt=a21aa-pjr8yn-leb1bjdk-1-lemufw3n-lw9&amp;blcat=M&amp;disci=5c4o3k5m-d686mo-j986g2ie-1-j986ge5c-3mp&amp;top=30&amp;sw=1'); return false;;PrimeFaces.addSubmitParam('form_anonym',{'form_anonym:j_idt88:4:j_idt120':'form_anonym:j_idt88:4:j_idt120','aeswindowguid':'ba98d03b-e0c1-43a5-fd72-a05130146a60'}).submit('form_anonym');return false;PrimeFaces.onPost();">Event_5</a>
+                                            </td>
+                                            <td role="gridcell">Loc5</td>
+                                            <td role="gridcell">05.08.2022</td>
+                                        </tr>
+                                        <tr data-ri="5" class="ui-widget-content ui-datatable-odd" role="row">
+                                            <td role="gridcell">6</td>
+                                            <td role="gridcell">
+                                                <span id="form_anonym:j_idt88:5:resultValue">8.11</span>
+                                            </td>
+                                            <td role="gridcell">-0.1</td>
+                                            <td role="gridcell">2f</td>
+                                            <td role="gridcell">
+                                                <a id="form_anonym:j_idt88:5:athlNameLink" href="#" class="ui-commandlink ui-widget" onclick="openURLForBestlist('https://www.swiss-athletics.ch/de/einzelner-athlet-bestenliste-neu?&amp;mobile=false&amp;blyear=2023&amp;con=CONTACT.WEB.131887&amp;blcat=M&amp;disci=5c4o3k5m-d686mo-j986g2ie-1-j986ge5c-3mp&amp;top=30&amp;srb=0&amp;sw=1'); return false;;PrimeFaces.addSubmitParam('form_anonym',{'aeswindowguid':'ba98d03b-e0c1-43a5-fd72-a05130146a60','form_anonym:j_idt88:5:athlNameLink':'form_anonym:j_idt88:5:athlNameLink'}).submit('form_anonym');return false;PrimeFaces.onPost();">Tester_6</a>
+                                            </td>
+                                            <td role="gridcell">
+                                                <a id="form_anonym:j_idt88:5:j_idt112" href="#" class="ui-commandlink ui-widget" onclick="openURLForBestlist('https://www.swiss-athletics.ch/de/verein-bestenliste-neu?&amp;mobile=false&amp;blyear=2023&amp;acc=ACC_1.SGALV.1011&amp;blcat=M&amp;disci=5c4o3k5m-d686mo-j986g2ie-1-j986ge5c-3mp&amp;top=30&amp;sw=1'); return false;;PrimeFaces.addSubmitParam('form_anonym',{'form_anonym:j_idt88:5:j_idt112':'form_anonym:j_idt88:5:j_idt112','aeswindowguid':'ba98d03b-e0c1-43a5-fd72-a05130146a60'}).submit('form_anonym');return false;PrimeFaces.onPost();">Club_6</a>
+                                            </td>
+                                            <td role="gridcell">SUI</td>
+                                            <td role="gridcell">06.05.1998</td>
+                                            <td role="gridcell">
+                                                <a id="form_anonym:j_idt88:5:j_idt120" href="#" class="ui-commandlink ui-widget" onclick="openURLForBestlist('https://www.swiss-athletics.ch/de/wettkampf-bestenliste-neu?&amp;mobile=false&amp;blyear=2023&amp;evt=a21aa-6dqfqu-lik5k1lr-1-liok96bm-22q&amp;blcat=M&amp;disci=5c4o3k5m-d686mo-j986g2ie-1-j986ge5c-3mp&amp;top=30&amp;sw=1'); return false;;PrimeFaces.addSubmitParam('form_anonym',{'form_anonym:j_idt88:5:j_idt120':'form_anonym:j_idt88:5:j_idt120','aeswindowguid':'ba98d03b-e0c1-43a5-fd72-a05130146a60'}).submit('form_anonym');return false;PrimeFaces.onPost();">Event_6</a>
+                                            </td>
+                                            <td role="gridcell">Loc6</td>
+                                            <td role="gridcell">06.08.2022</td>
+                                        </tr>
+                                        <tr data-ri="6" class="ui-widget-content ui-datatable-even" role="row">
+                                            <td role="gridcell">7</td>
+                                            <td role="gridcell">
+                                                <span id="form_anonym:j_idt88:6:resultValue">8.03</span>
+                                            </td>
+                                            <td role="gridcell">1.4</td>
+                                            <td role="gridcell">1f1</td>
+                                            <td role="gridcell">
+                                                <a id="form_anonym:j_idt88:6:athlNameLink" href="#" class="ui-commandlink ui-widget" onclick="openURLForBestlist('https://www.swiss-athletics.ch/de/einzelner-athlet-bestenliste-neu?&amp;mobile=false&amp;blyear=2023&amp;con=CONTACT.WEB.131887&amp;blcat=M&amp;disci=5c4o3k5m-d686mo-j986g2ie-1-j986ge5c-3mp&amp;top=30&amp;srb=0&amp;sw=1'); return false;;PrimeFaces.addSubmitParam('form_anonym',{'form_anonym:j_idt88:6:athlNameLink':'form_anonym:j_idt88:6:athlNameLink','aeswindowguid':'ba98d03b-e0c1-43a5-fd72-a05130146a60'}).submit('form_anonym');return false;PrimeFaces.onPost();">Tester_7</a>
+                                            </td>
+                                            <td role="gridcell">
+                                                <a id="form_anonym:j_idt88:6:j_idt112" href="#" class="ui-commandlink ui-widget" onclick="openURLForBestlist('https://www.swiss-athletics.ch/de/verein-bestenliste-neu?&amp;mobile=false&amp;blyear=2023&amp;acc=ACC_1.SGALV.1011&amp;blcat=M&amp;disci=5c4o3k5m-d686mo-j986g2ie-1-j986ge5c-3mp&amp;top=30&amp;sw=1'); return false;;PrimeFaces.addSubmitParam('form_anonym',{'form_anonym:j_idt88:6:j_idt112':'form_anonym:j_idt88:6:j_idt112','aeswindowguid':'ba98d03b-e0c1-43a5-fd72-a05130146a60'}).submit('form_anonym');return false;PrimeFaces.onPost();">Club_7</a>
+                                            </td>
+                                            <td role="gridcell">SUI</td>
+                                            <td role="gridcell">07.05.1998</td>
+                                            <td role="gridcell">
+                                                <a id="form_anonym:j_idt88:6:j_idt120" href="#" class="ui-commandlink ui-widget" onclick="openURLForBestlist('https://www.swiss-athletics.ch/de/wettkampf-bestenliste-neu?&amp;mobile=false&amp;blyear=2023&amp;evt=a21aa-oz1dk-lia60e1y-1-liihyltl-ilg3&amp;blcat=M&amp;disci=5c4o3k5m-d686mo-j986g2ie-1-j986ge5c-3mp&amp;top=30&amp;sw=1'); return false;;PrimeFaces.addSubmitParam('form_anonym',{'form_anonym:j_idt88:6:j_idt120':'form_anonym:j_idt88:6:j_idt120','aeswindowguid':'ba98d03b-e0c1-43a5-fd72-a05130146a60'}).submit('form_anonym');return false;PrimeFaces.onPost();">Event_7</a>
+                                            </td>
+                                            <td role="gridcell">Loc7</td>
+                                            <td role="gridcell">07.08.2022</td>
+                                        </tr>
+                                        <tr data-ri="7" class="ui-widget-content ui-datatable-odd" role="row">
+                                            <td role="gridcell">8</td>
+                                            <td role="gridcell">
+                                                <span id="form_anonym:j_idt88:7:resultValue">8.03</span>
+                                            </td>
+                                            <td role="gridcell">0.2</td>
+                                            <td role="gridcell">3f1</td>
+                                            <td role="gridcell">
+                                                <a id="form_anonym:j_idt88:7:athlNameLink" href="#" class="ui-commandlink ui-widget" onclick="openURLForBestlist('https://www.swiss-athletics.ch/de/einzelner-athlet-bestenliste-neu?&amp;mobile=false&amp;blyear=2023&amp;con=CONTACT.WEB.131887&amp;blcat=M&amp;disci=5c4o3k5m-d686mo-j986g2ie-1-j986ge5c-3mp&amp;top=30&amp;srb=0&amp;sw=1'); return false;;PrimeFaces.addSubmitParam('form_anonym',{'form_anonym:j_idt88:7:athlNameLink':'form_anonym:j_idt88:7:athlNameLink','aeswindowguid':'ba98d03b-e0c1-43a5-fd72-a05130146a60'}).submit('form_anonym');return false;PrimeFaces.onPost();">Tester_8</a>
+                                            </td>
+                                            <td role="gridcell">
+                                                <a id="form_anonym:j_idt88:7:j_idt112" href="#" class="ui-commandlink ui-widget" onclick="openURLForBestlist('https://www.swiss-athletics.ch/de/verein-bestenliste-neu?&amp;mobile=false&amp;blyear=2023&amp;acc=ACC_1.SGALV.1011&amp;blcat=M&amp;disci=5c4o3k5m-d686mo-j986g2ie-1-j986ge5c-3mp&amp;top=30&amp;sw=1'); return false;;PrimeFaces.addSubmitParam('form_anonym',{'form_anonym:j_idt88:7:j_idt112':'form_anonym:j_idt88:7:j_idt112','aeswindowguid':'ba98d03b-e0c1-43a5-fd72-a05130146a60'}).submit('form_anonym');return false;PrimeFaces.onPost();">Club_8</a>
+                                            </td>
+                                            <td role="gridcell">SUI</td>
+                                            <td role="gridcell">08.05.1998</td>
+                                            <td role="gridcell">
+                                                <a id="form_anonym:j_idt88:7:j_idt120" href="#" class="ui-commandlink ui-widget" onclick="openURLForBestlist('https://www.swiss-athletics.ch/de/wettkampf-bestenliste-neu?&amp;mobile=false&amp;blyear=2023&amp;evt=a21aa-hqi1yg-lhxtp92p-1-lhyiwnvp-145m&amp;blcat=M&amp;disci=5c4o3k5m-d686mo-j986g2ie-1-j986ge5c-3mp&amp;top=30&amp;sw=1'); return false;;PrimeFaces.addSubmitParam('form_anonym',{'form_anonym:j_idt88:7:j_idt120':'form_anonym:j_idt88:7:j_idt120','aeswindowguid':'ba98d03b-e0c1-43a5-fd72-a05130146a60'}).submit('form_anonym');return false;PrimeFaces.onPost();">Event_8</a>
+                                            </td>
+                                            <td role="gridcell">Loc8</td>
+                                            <td role="gridcell">08.08.2022</td>
+                                        </tr>
+                                        <tr data-ri="8" class="ui-widget-content ui-datatable-even" role="row">
+                                            <td role="gridcell">9</td>
+                                            <td role="gridcell">
+                                                <span id="form_anonym:j_idt88:8:resultValue">7.97</span>
+                                            </td>
+                                            <td role="gridcell">-0.4</td>
+                                            <td role="gridcell">4f</td>
+                                            <td role="gridcell">
+                                                <a id="form_anonym:j_idt88:8:athlNameLink" href="#" class="ui-commandlink ui-widget" onclick="openURLForBestlist('https://www.swiss-athletics.ch/de/einzelner-athlet-bestenliste-neu?&amp;mobile=false&amp;blyear=2023&amp;con=CONTACT.WEB.131887&amp;blcat=M&amp;disci=5c4o3k5m-d686mo-j986g2ie-1-j986ge5c-3mp&amp;top=30&amp;srb=0&amp;sw=1'); return false;;PrimeFaces.addSubmitParam('form_anonym',{'form_anonym:j_idt88:8:athlNameLink':'form_anonym:j_idt88:8:athlNameLink','aeswindowguid':'ba98d03b-e0c1-43a5-fd72-a05130146a60'}).submit('form_anonym');return false;PrimeFaces.onPost();">Tester_9</a>
+                                            </td>
+                                            <td role="gridcell">
+                                                <a id="form_anonym:j_idt88:8:j_idt112" href="#" class="ui-commandlink ui-widget" onclick="openURLForBestlist('https://www.swiss-athletics.ch/de/verein-bestenliste-neu?&amp;mobile=false&amp;blyear=2023&amp;acc=ACC_1.SGALV.1011&amp;blcat=M&amp;disci=5c4o3k5m-d686mo-j986g2ie-1-j986ge5c-3mp&amp;top=30&amp;sw=1'); return false;;PrimeFaces.addSubmitParam('form_anonym',{'form_anonym:j_idt88:8:j_idt112':'form_anonym:j_idt88:8:j_idt112','aeswindowguid':'ba98d03b-e0c1-43a5-fd72-a05130146a60'}).submit('form_anonym');return false;PrimeFaces.onPost();">Club_9</a>
+                                            </td>
+                                            <td role="gridcell">SUI</td>
+                                            <td role="gridcell">09.05.1998</td>
+                                            <td role="gridcell">
+                                                <a id="form_anonym:j_idt88:8:j_idt120" href="#" class="ui-commandlink ui-widget" onclick="openURLForBestlist('https://www.swiss-athletics.ch/de/wettkampf-bestenliste-neu?&amp;mobile=false&amp;blyear=2023&amp;evt=a21aa-9n6igw-lj10xo8t-1-lj87weyd-6pjo&amp;blcat=M&amp;disci=5c4o3k5m-d686mo-j986g2ie-1-j986ge5c-3mp&amp;top=30&amp;sw=1'); return false;;PrimeFaces.addSubmitParam('form_anonym',{'form_anonym:j_idt88:8:j_idt120':'form_anonym:j_idt88:8:j_idt120','aeswindowguid':'ba98d03b-e0c1-43a5-fd72-a05130146a60'}).submit('form_anonym');return false;PrimeFaces.onPost();">Event_9</a>
+                                            </td>
+                                            <td role="gridcell">Loc9</td>
+                                            <td role="gridcell">09.08.2022</td>
+                                        </tr>
+                                        <tr data-ri="9" class="ui-widget-content ui-datatable-odd" role="row">
+                                            <td role="gridcell">10</td>
+                                            <td role="gridcell">
+                                                <span id="form_anonym:j_idt88:9:resultValue">7.97</span>
+                                            </td>
+                                            <td role="gridcell"></td>
+                                            <td role="gridcell">6</td>
+                                            <td role="gridcell">
+                                                <a id="form_anonym:j_idt88:9:athlNameLink" href="#" class="ui-commandlink ui-widget" onclick="openURLForBestlist('https://www.swiss-athletics.ch/de/einzelner-athlet-bestenliste-neu?&amp;mobile=false&amp;blyear=2023&amp;con=CONTACT.WEB.131887&amp;blcat=M&amp;disci=5c4o3k5m-d686mo-j986g2ie-1-j986ge5c-3mp&amp;top=30&amp;srb=0&amp;sw=1'); return false;;PrimeFaces.addSubmitParam('form_anonym',{'aeswindowguid':'ba98d03b-e0c1-43a5-fd72-a05130146a60','form_anonym:j_idt88:9:athlNameLink':'form_anonym:j_idt88:9:athlNameLink'}).submit('form_anonym');return false;PrimeFaces.onPost();">Tester_10</a>
+                                            </td>
+                                            <td role="gridcell">
+                                                <a id="form_anonym:j_idt88:9:j_idt112" href="#" class="ui-commandlink ui-widget" onclick="openURLForBestlist('https://www.swiss-athletics.ch/de/verein-bestenliste-neu?&amp;mobile=false&amp;blyear=2023&amp;acc=ACC_1.SGALV.1011&amp;blcat=M&amp;disci=5c4o3k5m-d686mo-j986g2ie-1-j986ge5c-3mp&amp;top=30&amp;sw=1'); return false;;PrimeFaces.addSubmitParam('form_anonym',{'aeswindowguid':'ba98d03b-e0c1-43a5-fd72-a05130146a60','form_anonym:j_idt88:9:j_idt112':'form_anonym:j_idt88:9:j_idt112'}).submit('form_anonym');return false;PrimeFaces.onPost();">Club_10</a>
+                                            </td>
+                                            <td role="gridcell">SUI</td>
+                                            <td role="gridcell">10.05.1998</td>
+                                            <td role="gridcell">
+                                                <a id="form_anonym:j_idt88:9:j_idt120" href="#" class="ui-commandlink ui-widget" onclick="openURLForBestlist('https://www.swiss-athletics.ch/de/wettkampf-bestenliste-neu?&amp;mobile=false&amp;blyear=2023&amp;evt=a21aa-aobnbq-lik5cou8-1-limy173z-8iun&amp;blcat=M&amp;disci=5c4o3k5m-d686mo-j986g2ie-1-j986ge5c-3mp&amp;top=30&amp;sw=1'); return false;;PrimeFaces.addSubmitParam('form_anonym',{'form_anonym:j_idt88:9:j_idt120':'form_anonym:j_idt88:9:j_idt120','aeswindowguid':'ba98d03b-e0c1-43a5-fd72-a05130146a60'}).submit('form_anonym');return false;PrimeFaces.onPost();">Event_10</a>
+                                            </td>
+                                            <td role="gridcell">Loc10</td>
+                                            <td role="gridcell">10.08.2022</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="form_anonym:j_idt128" class="ui-outputpanel ui-widget">
+                            <div style="width: 100%; text-align: right;">
+                                <div id="form_anonym:j_idt130" class="ui-outputpanel ui-widget">
+                                    <span class="no-print">
+                                        <button id="form_anonym:j_idt133" name="form_anonym:j_idt133" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only actionButton" onclick="PrimeFaces.bcn(this,event,[function(event){printBestlist(); return false;},function(event){PrimeFaces.addSubmitParam('form_anonym',{'aeswindowguid':'ba98d03b-e0c1-43a5-fd72-a05130146a60'});PrimeFaces.onPost();}]);" title="Bestenliste drucken" type="submit">
+                                            <span class="ui-button-icon-left ui-icon ui-c fa fa-print"></span>
+                                            <span class="ui-button-text ui-c">Bestenliste drucken</span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0" value="-1273999470537917596:-4139814188658411250" autocomplete="off"/>
+                    </form>
+                    <div id="j_idt144"></div>
+                    <div id="j_idt145" class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-shadow ui-hidden-container">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

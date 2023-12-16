@@ -1,0 +1,43 @@
+%YAML 1.1
+---
+$schema: "http://json-schema.org/draft-04/schema"
+id: "http://stsci.edu/schemas/yaml-schema/draft-01"
+title:
+  Track Insight Configuration
+description: |
+  This is the configuration file for the Track Insight project.
+properties:
+  database:
+    type: object
+    properties:
+      drivername:
+        type: string
+        description: |
+          The drivername to use for the database.
+      username:
+        type: string
+        description: |
+          The username to use for the database.
+      password:
+        type: string
+        description: |
+          The password to use for the database.
+      host:
+        type: string
+        description: |
+          The host to use for the database.
+      port:
+        type: string
+        description: |
+          The port to use for the database.
+      database:
+        type: string
+        description: |
+          The database to use for the database.
+    required:
+      - drivername
+      - username
+      - password
+      - host
+      - port
+      - database
