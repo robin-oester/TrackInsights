@@ -6,13 +6,12 @@ This allows the system to be used with different databases.
 """
 import os
 
-from .athlete import Athlete
-from .club import Club
-from .discipline import DisciplineConfiguration
-from .discipline import Discipline
-from .event import Event
-from .result import Result
-from .log import Log
+from .athlete import Athlete  # noqa: F401
+from .club import Club  # noqa: F401
+from .discipline import Discipline, DisciplineConfiguration  # noqa: F401
+from .event import Event  # noqa: F401
+from .log import Log  # noqa: F401
+from .result import Result  # noqa: F401
 
 files = os.listdir(os.path.dirname(__file__))
 files.remove("__init__.py")

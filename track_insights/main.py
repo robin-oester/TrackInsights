@@ -3,11 +3,10 @@ import os
 import pathlib
 
 import yaml
-
 from track_insights.common import validate_yaml
 from track_insights.database import DatabaseConnection
 from track_insights.database.models import Discipline, DisciplineConfiguration
-from track_insights.scraping import Scraper, Processor, ScrapeConfig
+from track_insights.scraping import Processor, ScrapeConfig, Scraper
 
 logging.basicConfig(
     level=logging.NOTSET,
@@ -21,15 +20,11 @@ DATA_PATH = pathlib.Path(os.path.abspath(__file__)).parent / "data"
 
 
 def validate_config_schema(config: dict) -> bool:
-    schema_path = (
-        CONFIG_PATH / "schema" / "configuration_schema.yaml"
-    )
+    schema_path = CONFIG_PATH / "schema" / "configuration_schema.yaml"
     valid_yaml, exception = validate_yaml(config, schema_path)
 
     if not valid_yaml:
-        logger.error(
-            f"Error while validating pipeline configuration file for schema-compliance: {exception.message}"
-        )
+        logger.error(f"Error while validating pipeline configuration file for schema-compliance: {exception.message}")
         logger.error(exception)
         return False
     return True
@@ -54,9 +49,7 @@ def init_database(config: dict) -> None:
 
 
 def main() -> None:
-    config_path = (
-        CONFIG_PATH / "configuration.yaml"
-    )
+    config_path = CONFIG_PATH / "configuration.yaml"
     with open(config_path, "r", encoding="utf-8") as config_file:
         config: dict = yaml.safe_load(config_file)
     valid_config = validate_config_schema(config)
@@ -74,10 +67,10 @@ def main() -> None:
     ignored_entries_path = DATA_PATH / "ignored.json"
     ignored_entries: set[str] = set()
     if not ignored_entries_path.is_file():
-        with open(ignored_entries_path, "x") as file:
+        with open(ignored_entries_path, "x", encoding="utf-8") as file:
             file.write("")
     else:
-        with open(ignored_entries_path, "r") as file:
+        with open(ignored_entries_path, "r", encoding="utf-8") as file:
             while line := file.readline().strip():
                 if line in ignored_entries:
                     logger.warning(f"Duplicate entry '{line}'")
@@ -94,29 +87,32 @@ def main() -> None:
     processor = Processor(config, scrape_config, df, ignored_entries)
     processor.process(error_file_path)
 
+
 def get_sample_scrape_config(config: dict) -> ScrapeConfig:
     with DatabaseConnection(config) as database:
-        discipline_config: DisciplineConfiguration = database.session.query(DisciplineConfiguration).\
-            filter(DisciplineConfiguration.name == "Weit").first()
+        discipline_config: DisciplineConfiguration = (
+            database.session.query(DisciplineConfiguration).filter(DisciplineConfiguration.name == "Weit").first()
+        )
         if not discipline_config:
             raise ValueError("Discipline Configuration was not found!")
         disciplines: list[Discipline] = discipline_config.disciplines
     if len(disciplines) == 0:
-        raise ValueError(f"No associated discipline!")
+        raise ValueError("No associated discipline!")
     discipline: Discipline = disciplines[0]
 
     # scrape the results of 2023, all men ('M'), the 100 best results from the discipline we inserted.
     scrape_config = ScrapeConfig(
         year=2023,
-        category='M',
+        category="M",
         male=discipline.male,
         discipline_code=discipline.discipline_code,
         indoor=discipline.indoor,
         allow_wind=True,
         amount=10,
-        allow_nonhomologated=False)
+        allow_nonhomologated=False,
+    )
     return scrape_config
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

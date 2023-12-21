@@ -1,8 +1,8 @@
+# pylint: disable=redefined-outer-name
 import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import sessionmaker
-
 from track_insights.database.models import Discipline, DisciplineConfiguration
 
 
@@ -104,8 +104,9 @@ def test_update_discipline(session):
     discipline.indoor = True
     session.commit()
 
-    extracted_config: DisciplineConfiguration = session.query(DisciplineConfiguration)\
-        .filter(DisciplineConfiguration.id == 1).first()
+    extracted_config: DisciplineConfiguration = (
+        session.query(DisciplineConfiguration).filter(DisciplineConfiguration.id == 1).first()
+    )
 
     assert extracted_config is not None
     assert extracted_config.name == "100m"

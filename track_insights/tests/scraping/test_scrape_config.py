@@ -1,18 +1,11 @@
-from unittest.mock import patch, MagicMock
+from unittest.mock import MagicMock, patch
 
 import pytest
-
 from track_insights.scraping import ScrapeConfig
 
 
 def test_init():
-    scrape_config = ScrapeConfig(
-        year=2023,
-        category="M",
-        male=True,
-        discipline_code="Discipline_123",
-        indoor=False
-    )
+    scrape_config = ScrapeConfig(year=2023, category="M", male=True, discipline_code="Discipline_123", indoor=False)
 
     assert scrape_config.year == 2023
     assert scrape_config.category == "M"
@@ -34,7 +27,8 @@ def test_get_query_arguments(mock_validate_arguments: MagicMock):
         indoor=False,
         allow_wind=True,
         amount=500,
-        allow_nonhomologated=False)
+        allow_nonhomologated=False,
+    )
 
     query_args = scrape_config.get_query_arguments()
     assert query_args["lang"] == "de"

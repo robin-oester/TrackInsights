@@ -1,10 +1,10 @@
+# pylint: disable=redefined-outer-name
 from datetime import date
 
 import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-
-from track_insights.database.models import Athlete, Club, DisciplineConfiguration, Discipline, Event, Result
+from track_insights.database.models import Athlete, Club, Discipline, DisciplineConfiguration, Event, Result
 
 
 @pytest.fixture(autouse=True)
@@ -23,7 +23,7 @@ def session():
         name="Max Mustermann",
         birthdate=date.fromisoformat("2000-02-15"),
         nationality="SUI",
-        latest_date=date.fromisoformat("2023-10-10")
+        latest_date=date.fromisoformat("2023-10-10"),
     )
     club = Club(club_code="Club_123", name="LV Muster", latest_date=date.fromisoformat("2023-10-10"))
     event = Event(event_code="Event_123", name="Test Event", latest_date=date.fromisoformat("2023-10-10"))
@@ -57,7 +57,7 @@ def test_add_result(session):
         rank="1f1",
         location="Bern",
         date=date.fromisoformat("2023-10-10"),
-        homologated=True
+        homologated=True,
     )
     session.add(result)
     session.commit()
@@ -122,7 +122,7 @@ def test_update_result(session):
         rank="1f1",
         location="Bern",
         date=date.fromisoformat("2023-10-10"),
-        homologated=True
+        homologated=True,
     )
     session.add(result)
     session.commit()
@@ -132,7 +132,7 @@ def test_update_result(session):
         name="Petra Tester",
         birthdate=date.fromisoformat("2002-02-20"),
         nationality="GER",
-        latest_date=date.fromisoformat("2023-10-10")
+        latest_date=date.fromisoformat("2023-10-10"),
     )
     session.add(athlete)
 
@@ -163,7 +163,7 @@ def test_delete_result(session):
         rank="1f1",
         location="Bern",
         date=date.fromisoformat("2023-10-10"),
-        homologated=True
+        homologated=True,
     )
     session.add(result)
     session.commit()

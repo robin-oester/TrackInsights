@@ -2,7 +2,6 @@ from datetime import date
 
 from sqlalchemy import String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-
 from track_insights.database.database_base import DatabaseBase
 
 
@@ -14,7 +13,7 @@ class Club(DatabaseBase):
     club_code: Mapped[str] = mapped_column(String(length=50), unique=True)
     name: Mapped[str] = mapped_column("name", String(length=50), unique=True)
     latest_date: Mapped[date]
-    results: Mapped[list["Result"]] = relationship(back_populates="club", lazy="select")
+    results: Mapped[list["Result"]] = relationship(back_populates="club", lazy="select")  # noqa: F821
     __table_args__ = {"extend_existing": True}
 
     def __repr__(self) -> str:

@@ -1,10 +1,10 @@
+# pylint: disable=redefined-outer-name
 from datetime import date, timedelta
 
 import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import sessionmaker
-
 from track_insights.database.models import Event
 
 
@@ -22,11 +22,7 @@ def session():
 
 
 def test_add_event(session):
-    event = Event(
-        event_code="EvtCode_123",
-        name="Test Event",
-        latest_date=date.fromisoformat("2023-05-06")
-    )
+    event = Event(event_code="EvtCode_123", name="Test Event", latest_date=date.fromisoformat("2023-05-06"))
     session.add(event)
     session.commit()
 
@@ -41,17 +37,9 @@ def test_add_event(session):
 
 
 def test_constraints_event(session):
-    event1 = Event(
-        event_code="EvtCode_123",
-        name="Test Event",
-        latest_date=date.fromisoformat("2023-05-06")
-    )
+    event1 = Event(event_code="EvtCode_123", name="Test Event", latest_date=date.fromisoformat("2023-05-06"))
 
-    event2 = Event(
-        event_code="EvtCode_456",
-        name="Test Event 2",
-        latest_date=date.fromisoformat("2023-05-06")
-    )
+    event2 = Event(event_code="EvtCode_456", name="Test Event 2", latest_date=date.fromisoformat("2023-05-06"))
     session.add(event1)
     session.add(event2)
     session.commit()
@@ -66,11 +54,7 @@ def test_constraints_event(session):
 
 
 def test_update_event(session):
-    event = Event(
-        event_code="EvtCode_123",
-        name="Test Event",
-        latest_date=date.fromisoformat("2023-05-06")
-    )
+    event = Event(event_code="EvtCode_123", name="Test Event", latest_date=date.fromisoformat("2023-05-06"))
     session.add(event)
     session.commit()
 
@@ -88,11 +72,7 @@ def test_update_event(session):
 
 
 def test_delete_club(session):
-    event = Event(
-        event_code="EvtCode_123",
-        name="Test Event",
-        latest_date=date.fromisoformat("2023-05-06")
-    )
+    event = Event(event_code="EvtCode_123", name="Test Event", latest_date=date.fromisoformat("2023-05-06"))
     session.add(event)
     session.commit()
 

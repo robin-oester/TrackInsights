@@ -1,10 +1,10 @@
+# pylint: disable=redefined-outer-name
 from datetime import date, timedelta
 
 import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import sessionmaker
-
 from track_insights.database.models import Club
 
 
@@ -22,11 +22,7 @@ def session():
 
 
 def test_add_club(session):
-    club = Club(
-        club_code="Code_123",
-        name="LV Muster",
-        latest_date=date.fromisoformat("2023-01-11")
-    )
+    club = Club(club_code="Code_123", name="LV Muster", latest_date=date.fromisoformat("2023-01-11"))
     session.add(club)
     session.commit()
 
@@ -41,16 +37,8 @@ def test_add_club(session):
 
 
 def test_constraints_club(session):
-    club1 = Club(
-        club_code="Code_123",
-        name="LV Muster",
-        latest_date=date.fromisoformat("2023-01-11")
-    )
-    club2 = Club(
-        club_code="Code_456",
-        name="LC Tester",
-        latest_date=date.fromisoformat("2023-01-11")
-    )
+    club1 = Club(club_code="Code_123", name="LV Muster", latest_date=date.fromisoformat("2023-01-11"))
+    club2 = Club(club_code="Code_456", name="LC Tester", latest_date=date.fromisoformat("2023-01-11"))
 
     session.add(club1)
     session.add(club2)
@@ -66,11 +54,7 @@ def test_constraints_club(session):
 
 
 def test_update_club(session):
-    club = Club(
-        club_code="Code_123",
-        name="LV Muster",
-        latest_date=date.fromisoformat("2023-01-31")
-    )
+    club = Club(club_code="Code_123", name="LV Muster", latest_date=date.fromisoformat("2023-01-31"))
     session.add(club)
     session.commit()
 
@@ -88,11 +72,7 @@ def test_update_club(session):
 
 
 def test_delete_club(session):
-    club = Club(
-        club_code="Code_123",
-        name="LV Muster",
-        latest_date=date.fromisoformat("2023-01-31")
-    )
+    club = Club(club_code="Code_123", name="LV Muster", latest_date=date.fromisoformat("2023-01-31"))
     session.add(club)
     session.commit()
 

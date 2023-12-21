@@ -2,13 +2,12 @@ import logging
 import pathlib
 import re
 
-import pandas as pd
 import numpy as np
+import pandas as pd
 import sqlalchemy
 from sqlalchemy.orm import Session
-
 from track_insights.database import DatabaseConnection
-from track_insights.database.models import Result, Discipline, Athlete, Club, Event
+from track_insights.database.models import Athlete, Club, Discipline, Event, Result
 from track_insights.scraping.bestlist_field import BestlistField
 from track_insights.scraping.scrape_config import ScrapeConfig
 
@@ -20,7 +19,6 @@ logger = logging.getLogger(__name__)
 
 
 class Processor:
-
     def __init__(self, config: dict, scrape_config: ScrapeConfig, bestlist: pd.DataFrame, ignored_entries: set[str]):
         """
         Initializes the scraping.
@@ -38,6 +36,7 @@ class Processor:
         self.wind_relevant = BestlistField.WIND.value in bestlist.columns
         self.homologation_relevant = BestlistField.NOT_HOMOLOGATED.value in bestlist.columns
 
+    # pylint: disable=too-many-branches,too-many-locals,too-many-statements
     def process(self, error_path: pathlib.Path) -> None:
         """
         Processes the bestlist by inserting the newly seen results and updating the changed ones.
@@ -47,14 +46,20 @@ class Processor:
         bestlist = self.original_bestlist.copy(True)
         logger.info(f"Processing bestlist for scrape config {self.scrape_config}")
 
-        bestlist[BestlistField.DATE.value] = pd.to_datetime(bestlist[BestlistField.DATE.value], format="%d.%m.%Y", errors="coerce")
-        bestlist[BestlistField.BIRTHDATE.value] = pd.to_datetime(bestlist[BestlistField.BIRTHDATE.value], format="%d.%m.%Y", errors="coerce")
+        bestlist[BestlistField.DATE.value] = pd.to_datetime(
+            bestlist[BestlistField.DATE.value], format="%d.%m.%Y", errors="coerce"
+        )
+        bestlist[BestlistField.BIRTHDATE.value] = pd.to_datetime(
+            bestlist[BestlistField.BIRTHDATE.value], format="%d.%m.%Y", errors="coerce"
+        )
         bestlist[BestlistField.RESULT.value] = bestlist[BestlistField.RESULT.value].map(self._parse_result)
 
         # masks all valid (parsable) records
-        bestlist[BestlistField.VALID.value] = bestlist[BestlistField.DATE.value].notna() & \
-                                        bestlist[BestlistField.BIRTHDATE.value].notna() & \
-                                        (bestlist[BestlistField.RESULT.value] >= 0)
+        bestlist[BestlistField.VALID.value] = (
+            bestlist[BestlistField.DATE.value].notna()
+            & bestlist[BestlistField.BIRTHDATE.value].notna()
+            & (bestlist[BestlistField.RESULT.value] >= 0)
+        )
 
         if self.wind_relevant:
             # depending on the value for column wind, a record is marked as (in)valid
@@ -71,7 +76,9 @@ class Processor:
         if not bestlist[BestlistField.VALID.value].all():
             # store invalid records to json file
             invalid_records = self.original_bestlist[~bestlist[BestlistField.VALID.value]].copy()
-            errors = invalid_records.to_json(orient="records", lines=True).split("\n")[:-1]  # do not capture final empty string
+            errors = invalid_records.to_json(orient="records", lines=True).split("\n")[
+                :-1
+            ]  # do not capture final empty string
             invalid_records[BestlistField.SCRAPE_CONFIG.value] = self.scrape_config
 
             # remove ignored records
@@ -90,16 +97,22 @@ class Processor:
 
         # fetch the discipline
         with DatabaseConnection(self.config) as database:
-            discipline: Discipline = database.session.query(Discipline).filter(
-                Discipline.discipline_code == self.scrape_config.discipline_code,
-                Discipline.indoor == self.scrape_config.indoor,
-                Discipline.male == self.scrape_config.male
-            ).first()
+            discipline: Discipline = (
+                database.session.query(Discipline)
+                .filter(
+                    Discipline.discipline_code == self.scrape_config.discipline_code,
+                    Discipline.indoor == self.scrape_config.indoor,
+                    Discipline.male == self.scrape_config.male,
+                )
+                .first()
+            )
 
         if not discipline:
-            logger.error(f"Could not find discipline with code {self.scrape_config.discipline_code}, "
-                         f"indoor = {self.scrape_config.indoor}, "
-                         f"male = {self.scrape_config.male}")
+            logger.error(
+                f"Could not find discipline with code {self.scrape_config.discipline_code}, "
+                f"indoor = {self.scrape_config.indoor}, "
+                f"male = {self.scrape_config.male}"
+            )
             return
 
         ascending = discipline.config.ascending
@@ -114,7 +127,7 @@ class Processor:
         with DatabaseConnection(self.config) as database:
             insertion_mask, deletion_mask, similarities = self._compare_records(bl_records, db_records, ascending)
 
-            # if we did not find an exact match of the bestlist record, we greedily search for a similar database record.
+            # if we did not find exact match of the bestlist record, we greedily search for a similar database record.
             total_updates = 0
             for bl_idx, db_idx in similarities:
                 if insertion_mask[bl_idx] and deletion_mask[db_idx]:
@@ -132,7 +145,9 @@ class Processor:
 
             # insert records
             insertion_records = bl_records[insertion_mask]
-            (added_athletes, added_clubs, added_events), amount_updates = self._insert_records(database.session, insertion_records, discipline.id)
+            (added_athletes, added_clubs, added_events), amount_updates = self._insert_records(
+                database.session, insertion_records, discipline.id
+            )
             total_updates += amount_updates
             database.session.commit()
 
@@ -140,11 +155,15 @@ class Processor:
             logger.info(f"Deleting {len(deletion_keys)} key(s): {deletion_keys}.")
         if len(insertion_records) > 0:
             logger.info(
-                f"Insertion Summary: {len(insertion_records)} record(s), {added_athletes} athlete(s), {added_clubs} club(s), {added_events} event(s).")
+                f"Insertion Summary: {len(insertion_records)} record(s), {added_athletes} athlete(s), "
+                f"{added_clubs} club(s), {added_events} event(s)."
+            )
         if total_updates > 0:
             logger.info(f"Total Updates: {total_updates}.")
 
-    def _insert_records(self, session: Session, records: np.recarray, discipline_id: int) -> ((int, int, int), int):
+    def _insert_records(
+        self, session: Session, records: np.recarray, discipline_id: int
+    ) -> tuple[tuple[int, int, int], int]:
         """
         Inserts the records to the database.
         The statistics include the amount of added athletes, clubs and events
@@ -157,37 +176,44 @@ class Processor:
         added_athletes, added_clubs, added_events = 0, 0, 0
         total_modifications = 0
         for record in records:
-            athlete: Athlete = session.query(Athlete) \
-                .filter(Athlete.athlete_code == record[BestlistField.ATHLETE_CODE.value]).first()
+            athlete: Athlete = (
+                session.query(Athlete).filter(Athlete.athlete_code == record[BestlistField.ATHLETE_CODE.value]).first()
+            )
             result_date = record[BestlistField.DATE.value].item()
             if not athlete:
                 # insert new athlete
                 added_athletes += 1
-                athlete = Athlete(name=record[BestlistField.ATHLETE.value],
-                                  birthdate=record[BestlistField.BIRTHDATE.value].item(),
-                                  nationality=record[BestlistField.NATIONALITY.value],
-                                  athlete_code=record[BestlistField.ATHLETE_CODE.value],
-                                  latest_date=result_date)
+                athlete = Athlete(
+                    name=record[BestlistField.ATHLETE.value],
+                    birthdate=record[BestlistField.BIRTHDATE.value].item(),
+                    nationality=record[BestlistField.NATIONALITY.value],
+                    athlete_code=record[BestlistField.ATHLETE_CODE.value],
+                    latest_date=result_date,
+                )
                 session.add(athlete)
 
-            club: Club = session.query(Club) \
-                .filter(Club.club_code == record[BestlistField.CLUB_CODE.value]).first()
+            club: Club = session.query(Club).filter(Club.club_code == record[BestlistField.CLUB_CODE.value]).first()
             if not club:
                 # insert new club
                 added_clubs += 1
-                club = Club(name=record[BestlistField.CLUB.value],
-                            club_code=record[BestlistField.CLUB_CODE.value],
-                            latest_date=result_date)
+                club = Club(
+                    name=record[BestlistField.CLUB.value],
+                    club_code=record[BestlistField.CLUB_CODE.value],
+                    latest_date=result_date,
+                )
                 session.add(club)
 
-            event: Event = session.query(Event) \
-                .filter(Event.event_code == record[BestlistField.EVENT_CODE.value]).first()
+            event: Event = (
+                session.query(Event).filter(Event.event_code == record[BestlistField.EVENT_CODE.value]).first()
+            )
             if not event:
                 # insert new event
                 added_events += 1
-                event = Event(name=record[BestlistField.EVENT.value],
-                              event_code=record[BestlistField.EVENT_CODE.value],
-                              latest_date=result_date)
+                event = Event(
+                    name=record[BestlistField.EVENT.value],
+                    event_code=record[BestlistField.EVENT_CODE.value],
+                    latest_date=result_date,
+                )
                 session.add(event)
 
             total_modifications += self._update_entries(athlete, club, event, record)
@@ -202,13 +228,16 @@ class Processor:
                 rank=None if record[BestlistField.RANK.value] == "" else record[BestlistField.RANK.value],
                 location=record[BestlistField.LOCATION.value],
                 date=result_date,
-                homologated=False if self.homologation_relevant and record[BestlistField.NOT_HOMOLOGATED.value] else True
+                homologated=not (self.homologation_relevant and record[BestlistField.NOT_HOMOLOGATED.value]),
             )
             session.add(result)
             session.flush()
         return (added_athletes, added_clubs, added_events), total_modifications
 
-    def _compare_records(self, bl_records: np.recarray, db_records: np.recarray, ascending: bool) -> (np.ndarray, np.ndarray, list[(int, int)]):
+    # pylint: disable=too-many-locals
+    def _compare_records(
+        self, bl_records: np.recarray, db_records: np.recarray, ascending: bool
+    ) -> tuple[np.ndarray, np.ndarray, list[tuple[int, int]]]:
         """
         Compares the bestlist records to the database records.
         This method returns the insertion mask (for the bestlist records), the deletion mask (for the database records),
@@ -230,7 +259,7 @@ class Processor:
         curr_db_idx = 0
 
         # list of similar records from the bestlist and database.
-        similar_records: list[(int, int)] = []
+        similar_records: list[tuple[int, int]] = []
         while curr_bl_idx < amount_bestlist_records:
             curr_bl_record = bl_records[curr_bl_idx]
 
@@ -240,7 +269,7 @@ class Processor:
                 insertion_mask[curr_bl_idx] = False
                 curr_bl_idx += 1
                 continue
-            elif curr_db_idx >= amount_database_records:
+            if curr_db_idx >= amount_database_records:
                 curr_bl_idx += 1
                 continue
 
@@ -249,20 +278,25 @@ class Processor:
             # check if a match is even possible (same performance for bestlist and database record).
             curr_bl_result = curr_bl_record[BestlistField.RESULT.value]
             curr_db_result = curr_db_record[BestlistField.RESULT.value]
-            if ((curr_db_result > curr_bl_result) and ascending) or \
-                    ((curr_db_result < curr_bl_result) and not ascending):
+            if ((curr_db_result > curr_bl_result) and ascending) or (
+                (curr_db_result < curr_bl_result) and not ascending
+            ):
                 curr_bl_idx += 1
                 continue
 
-            if ((curr_bl_result > curr_db_result) and ascending) or \
-                    ((curr_bl_result < curr_db_result) and not ascending):
+            if ((curr_bl_result > curr_db_result) and ascending) or (
+                (curr_bl_result < curr_db_result) and not ascending
+            ):
                 curr_db_idx += 1
                 continue
 
             # here: curr_bl_result == curr_db_result
             # find the database record that matches the bestlist record.
             next_db_idx = curr_db_idx
-            while next_db_idx < amount_database_records and db_records[next_db_idx][BestlistField.RESULT.value] == curr_bl_result:
+            while (
+                next_db_idx < amount_database_records
+                and db_records[next_db_idx][BestlistField.RESULT.value] == curr_bl_result
+            ):
                 next_db_record = db_records[next_db_idx]
                 similarity = self._get_record_similarity(curr_bl_record, next_db_record)
                 if similarity == 1:
@@ -272,7 +306,7 @@ class Processor:
                     if next_db_idx == curr_db_idx:
                         curr_db_idx += 1
                     break
-                elif similarity == 0:
+                if similarity == 0:
                     # all attributes regarding the result are equal, add to the similarity list.
                     similar_records.append((curr_bl_idx, next_db_idx))
                 next_db_idx += 1
@@ -291,33 +325,47 @@ class Processor:
         :return: +1 whenever they are considered equal, 0 if there are only differences not related to the result and
         -1 whenever they are differ in the result.
         """
-        result_equal = self._compare_record_fields(record1, record2, fields=[
-            BestlistField.RESULT,
-            BestlistField.RANK,
-            BestlistField.LOCATION,
-            BestlistField.DATE,
-            BestlistField.ATHLETE_CODE,
-            BestlistField.CLUB_CODE,
-            BestlistField.EVENT_CODE
-        ])
+        result_equal = self._compare_record_fields(
+            record1,
+            record2,
+            fields=[
+                BestlistField.RESULT,
+                BestlistField.RANK,
+                BestlistField.LOCATION,
+                BestlistField.DATE,
+                BestlistField.ATHLETE_CODE,
+                BestlistField.CLUB_CODE,
+                BestlistField.EVENT_CODE,
+            ],
+        )
         if self.wind_relevant:
             both_nan = np.isnan(record1[BestlistField.WIND.value]) and np.isnan(record2[BestlistField.WIND.value])
             if not both_nan:
                 if np.isnan(record1[BestlistField.WIND.value]) or np.isnan(record2[BestlistField.WIND.value]):
                     return -1
-                result_equal &= int(record1[BestlistField.WIND.value] * 10) == int(record2[BestlistField.WIND.value] * 10)
+                result_equal &= int(record1[BestlistField.WIND.value] * 10) == int(
+                    record2[BestlistField.WIND.value] * 10
+                )
         if self.homologation_relevant:
             result_equal &= record1[BestlistField.NOT_HOMOLOGATED.value] == record2[BestlistField.NOT_HOMOLOGATED.value]
         if not result_equal:
             return -1
 
-        return 1 if self._compare_record_fields(record1, record2, fields=[
-            BestlistField.ATHLETE,
-            BestlistField.NATIONALITY,
-            BestlistField.BIRTHDATE,
-            BestlistField.CLUB,
-            BestlistField.EVENT
-        ]) else 0
+        return (
+            1
+            if self._compare_record_fields(
+                record1,
+                record2,
+                fields=[
+                    BestlistField.ATHLETE,
+                    BestlistField.NATIONALITY,
+                    BestlistField.BIRTHDATE,
+                    BestlistField.CLUB,
+                    BestlistField.EVENT,
+                ],
+            )
+            else 0
+        )
 
     @staticmethod
     def _update_entries(athlete: Athlete, club: Club, event: Event, record: np.record) -> int:
@@ -361,7 +409,7 @@ class Processor:
         return amount_updates
 
     @staticmethod
-    def _compare_record_fields(record1: np.record, record2: np.record, fields: [BestlistField]) -> bool:
+    def _compare_record_fields(record1: np.record, record2: np.record, fields: list[BestlistField]) -> bool:
         """
         Checks whether the given records are equal regarding the values of several fields.
 
@@ -370,7 +418,7 @@ class Processor:
         :param fields: the fields, which are used for comparison.
         :return: whether the records are equal.
         """
-        return all([record1[field.value] == record2[field.value] for field in fields])
+        return all(record1[field.value] == record2[field.value] for field in fields)
 
     def _read_results_from_database(self, discipline: Discipline) -> np.recarray:
         """
@@ -380,20 +428,26 @@ class Processor:
         :return: array of records.
         """
         with DatabaseConnection(self.config) as database:
-            # ignoring the category (only a problem if we fetch other category than 'M' or 'F'.
-            results: list[Result] = database.session.query(Result).filter(
-                Result.discipline_id == discipline.id,
-                sqlalchemy.extract("year", Result.date) == self.scrape_config.year,
-                Result.manual.is_(False),
-                Result.homologated if not self.scrape_config.allow_nonhomologated else True,
-                Result.wind <= 2.0 if Result.wind and not self.scrape_config.allow_wind else True,
-            ).order_by(
-                Result.performance.asc() if discipline.config.ascending else Result.performance.desc(),
-                Result.date.asc()
-            ).limit(self.scrape_config.amount).all()
+            # ignoring the category (only a problem if we fetch other category than 'M' or 'F').
+            results: list[Result] = (
+                database.session.query(Result)
+                .filter(
+                    Result.discipline_id == discipline.id,
+                    sqlalchemy.extract("year", Result.date) == self.scrape_config.year,
+                    Result.manual.is_(False),
+                    Result.homologated if not self.scrape_config.allow_nonhomologated else True,
+                    Result.wind <= 2.0 if Result.wind and not self.scrape_config.allow_wind else True,
+                )
+                .order_by(
+                    Result.performance.asc() if discipline.config.ascending else Result.performance.desc(),
+                    Result.date.asc(),
+                )
+                .limit(self.scrape_config.amount)
+                .all()
+            )
 
             if len(results) == self.scrape_config.amount:
-                # This can have bad implications. E.g., the deletion of results that are (now) out of scope
+                # This may have bad implications.
                 logger.warning(f"Reached limit fetching results from database. Limit: {self.scrape_config.amount}.")
 
             return self._results_to_records(results)
@@ -422,7 +476,7 @@ class Processor:
                 BestlistField.DATE.get_dtype_pair(),
                 BestlistField.ATHLETE_CODE.get_dtype_pair(),
                 BestlistField.CLUB_CODE.get_dtype_pair(),
-                BestlistField.EVENT_CODE.get_dtype_pair()
+                BestlistField.EVENT_CODE.get_dtype_pair(),
             ]
         )
 
@@ -443,7 +497,7 @@ class Processor:
                 result.date,
                 result.athlete.athlete_code,
                 result.club.club_code,
-                result.event.event_code
+                result.event.event_code,
             )
 
         return data.view(np.recarray)
@@ -457,8 +511,11 @@ class Processor:
         :param ascending: whether the results must be in ascending order.
         :return: whether the results are getting monotonically better.
         """
-        return bestlist[BestlistField.RESULT.value].is_monotonic_decreasing if not ascending \
+        return (
+            bestlist[BestlistField.RESULT.value].is_monotonic_decreasing
+            if not ascending
             else bestlist[BestlistField.RESULT.value].is_monotonic_increasing
+        )
 
     @staticmethod
     def _parse_result(serialized_result: str) -> int:
@@ -473,9 +530,11 @@ class Processor:
 
         # see: https://pythex.org/ by removing all escape symbols ('\')
         # matches everything of the form HH:mm:ss.hh (ss < 60) or ss.hh (with ss >= 60)
-        match = re.match('^(?:(?:(\\d+):)?([0-5]?\\d):)?([0-5]?\\d)(?:\\.(\\d{1,2}))?$', serialized_result) \
-                or re.match('^(\\d+):([0-5]?\\d)(?:\\.(\\d{1,2}))?$', serialized_result) \
-                or re.match('^(\\d+)(?:\\.(\\d{1,2}))?$', serialized_result)
+        match = (
+            re.match("^(?:(?:(\\d+):)?([0-5]?\\d):)?([0-5]?\\d)(?:\\.(\\d{1,2}))?$", serialized_result)
+            or re.match("^(\\d+):([0-5]?\\d)(?:\\.(\\d{1,2}))?$", serialized_result)
+            or re.match("^(\\d+)(?:\\.(\\d{1,2}))?$", serialized_result)
+        )
 
         if not match:
             return -1
@@ -487,7 +546,7 @@ class Processor:
             groups = (None, None, *groups)
 
         hours, minutes, seconds, hundreds = groups
-        total = int(hundreds.ljust(2, '0')) if hundreds else 0
+        total = int(hundreds.ljust(2, "0")) if hundreds else 0
         total += int(seconds) * SECONDS_TO_HUNDREDTHS
         total += int(minutes) * MINUTES_TO_HUNDREDTHS if minutes else 0
         total += int(hours) * HOURS_TO_HUNDREDTHS if hours else 0

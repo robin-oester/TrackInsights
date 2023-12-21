@@ -1,6 +1,5 @@
-from sqlalchemy import String, UniqueConstraint, ForeignKey
+from sqlalchemy import ForeignKey, String, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-
 from track_insights.database.database_base import DatabaseBase
 
 
@@ -28,8 +27,9 @@ class Discipline(DatabaseBase):
     discipline_code: Mapped[str] = mapped_column(String(50))
     indoor: Mapped[bool]
     male: Mapped[bool]
-    config: Mapped[DisciplineConfiguration] = relationship(back_populates="disciplines", lazy='joined')
-    results: Mapped[list["Result"]] = relationship(back_populates="discipline", lazy="select")
+    ignore: Mapped[bool] = mapped_column(default=False)
+    config: Mapped[DisciplineConfiguration] = relationship(back_populates="disciplines", lazy="joined")
+    results: Mapped[list["Result"]] = relationship(back_populates="discipline", lazy="select")  # noqa: F821
     __table_args__ = (UniqueConstraint("discipline_code", "indoor", "male"), {"extend_existing": True})
 
     def __repr__(self) -> str:

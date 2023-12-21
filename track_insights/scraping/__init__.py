@@ -3,10 +3,10 @@ This package contains class related to scraping the swiss-athletics database web
 """
 import os
 
-from .scraper import Scraper
-from .processor import Processor
-from .scrape_config import ScrapeConfig
-from .bestlist_field import BestlistField
+from .bestlist_field import BestlistField  # noqa: F401
+from .processor import Processor  # noqa: F401
+from .scrape_config import ScrapeConfig  # noqa: F401
+from .scraper import Scraper  # noqa: F401
 
 files = os.listdir(os.path.dirname(__file__))
 files.remove("__init__.py")

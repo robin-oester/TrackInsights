@@ -1,5 +1,6 @@
 from enum import Enum
 from typing import Any
+
 import numpy as np
 
 
@@ -23,24 +24,24 @@ class BestlistField(Enum):
     ID = ("id", np.int64)
     VALID = ("valid", np.bool_)
 
-    def __new__(cls, *args, **kwds):
+    def __new__(cls, *args: tuple[Any, ...], **kwds: dict[str, Any]):  # type: ignore[no-untyped-def]
         obj = object.__new__(cls)
         obj._value_ = args[0]
         return obj
 
     # ignore the first param since it's already set by __new__
-    def __init__(self, _: str, dtype: Any, *args, **kwds):
+    def __init__(self, _: str, dtype: Any, *args: tuple[Any, ...], **kwds: dict[str, Any]):
         super().__init__(*args, **kwds)
         self._dtype_ = dtype
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.value
 
     @property
-    def dtype(self):
+    def dtype(self) -> Any:
         return self._dtype_
 
-    def get_dtype_pair(self) -> (str, Any):
+    def get_dtype_pair(self) -> tuple[str, Any]:
         return self.value, self.dtype
 
     @staticmethod

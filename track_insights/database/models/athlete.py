@@ -1,8 +1,7 @@
 from datetime import date
 
-from sqlalchemy import String, UniqueConstraint, CHAR
+from sqlalchemy import CHAR, String, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-
 from track_insights.database.database_base import DatabaseBase
 
 
@@ -16,7 +15,7 @@ class Athlete(DatabaseBase):
     birthdate: Mapped[date]
     nationality: Mapped[str] = mapped_column(CHAR(length=3))
     latest_date: Mapped[date]
-    results: Mapped[list["Result"]] = relationship(back_populates="athlete", lazy="select")
+    results: Mapped[list["Result"]] = relationship(back_populates="athlete", lazy="select")  # noqa: F821
     __table_args__ = (UniqueConstraint("name", "birthdate", "nationality"), {"extend_existing": True})
 
     def __repr__(self) -> str:

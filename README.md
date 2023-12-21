@@ -1,4 +1,8 @@
 # TrackInsights: Replication of the Swiss Athletics Database
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/pylint-dev/pylint)
+
+
 ## Local Setup
 
 Run the following commands (in the root folder) to set up the project locally:

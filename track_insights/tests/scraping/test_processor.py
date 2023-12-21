@@ -3,12 +3,11 @@ import pathlib
 import tempfile
 from datetime import date
 
-import pandas as pd
 import numpy as np
-
+import pandas as pd
 from track_insights.database import DatabaseConnection
-from track_insights.database.models import Athlete, Club, DisciplineConfiguration, Discipline, Event, Result
-from track_insights.scraping import ScrapeConfig, Processor, BestlistField
+from track_insights.database.models import Athlete, Club, Discipline, DisciplineConfiguration, Event, Result
+from track_insights.scraping import BestlistField, Processor, ScrapeConfig
 
 DATABASE = pathlib.Path(os.path.abspath(__file__)).parent / "test_processor.database"
 DF_PATH = pathlib.Path(os.path.abspath(__file__)).parent / "resources" / "sample_dataframe.csv"
@@ -38,14 +37,10 @@ def setup():
             name="Max Mustermann",
             birthdate=date.fromisoformat("2000-02-15"),
             nationality="SUI",
-            latest_date=date.fromisoformat("2023-01-11")
+            latest_date=date.fromisoformat("2023-01-11"),
         )
 
-        club = Club(
-            club_code="Club_1",
-            name="LV Muster",
-            latest_date=date.fromisoformat("2023-01-11")
-        )
+        club = Club(club_code="Club_1", name="LV Muster", latest_date=date.fromisoformat("2023-01-11"))
 
         discipline_config = DisciplineConfiguration(
             name="Weit",
@@ -59,11 +54,7 @@ def setup():
             male=True,
         )
 
-        event = Event(
-            event_code="Event_1",
-            name="Test Event",
-            latest_date=date.fromisoformat("2023-01-11")
-        )
+        event = Event(event_code="Event_1", name="Test Event", latest_date=date.fromisoformat("2023-01-11"))
 
         database.session.add(athlete)
         database.session.add(club)
@@ -80,20 +71,26 @@ def teardown():
 def get_scrape_config() -> ScrapeConfig:
     return ScrapeConfig(
         year=2023,
-        category='M',
+        category="M",
         male=True,
         discipline_code="Discipline_1",
         indoor=False,
         allow_wind=True,
         amount=30,
-        allow_nonhomologated=True
+        allow_nonhomologated=True,
     )
 
 
 def get_sample_processor() -> Processor:
     ignored_entries = {
-        '{"Resultat":"8.12a","Wind":"0.0","Rang":"1f1","Name":"Tester_5","Verein":"Club_5","Nat.":"SUI","Geb. Dat.":"05.05.1998","Wettkampf":"Event_5","Ort":"Loc5","Datum":"05.08.2022","athlete_code":"CONTACT.WEB.131887","club_code":"ACC_1.SGALV.1011","event_code":"a21aa-pjr8yn-leb1bjdk-1-lemufw3n-lw9"}',
-        '{"Resultat":"8.03","Wind":"1.4","Rang":"1f1","Name":"Tester_7","Verein":"Club_7","Nat.":"SUI","Geb. Dat.":"07.13.1998","Wettkampf":"Event_7","Ort":"Loc7","Datum":"07.08.2022","athlete_code":"CONTACT.WEB.131887","club_code":"ACC_1.SGALV.1011","event_code":"a21aa-oz1dk-lia60e1y-1-liihyltl-ilg3"}'
+        '{"Resultat":"8.12a","Wind":"0.0","Rang":"1f1","Name":"Tester_5","Verein":"Club_5",'
+        '"Nat.":"SUI","Geb. Dat.":"05.05.1998","Wettkampf":"Event_5","Ort":"Loc5","Datum":"05.08.2022",'
+        '"athlete_code":"CONTACT.WEB.131887","club_code":"ACC_1.SGALV.1011",'
+        '"event_code":"a21aa-pjr8yn-leb1bjdk-1-lemufw3n-lw9"}',
+        '{"Resultat":"8.03","Wind":"1.4","Rang":"1f1","Name":"Tester_7","Verein":"Club_7",'
+        '"Nat.":"SUI","Geb. Dat.":"07.13.1998","Wettkampf":"Event_7","Ort":"Loc7","Datum":"07.08.2022",'
+        '"athlete_code":"CONTACT.WEB.131887","club_code":"ACC_1.SGALV.1011",'
+        '"event_code":"a21aa-oz1dk-lia60e1y-1-liihyltl-ilg3"}',
     }
     sample_bestlist = pd.read_csv(DF_PATH, keep_default_na=False, dtype=str)
     config = get_minimal_config()
@@ -103,8 +100,14 @@ def get_sample_processor() -> Processor:
 
 def test_init():
     ignored_entries = {
-        '{"Resultat":"8.12","Wind":"0.0","Rang":"1f1","Name":"Tester_5","Verein":"Club_5","Nat.":"SUI","Geb. Dat.":"05.05.1998","Wettkampf":"Event_5","Ort":"Loc5","Datum":"05.08.2022","athlete_code":"CONTACT.WEB.131887","club_code":"ACC_1.SGALV.1011","event_code":"a21aa-pjr8yn-leb1bjdk-1-lemufw3n-lw9"}',
-        '{"Resultat":"8.03","Wind":"1.4","Rang":"1f1","Name":"Tester_7","Verein":"Club_7","Nat.":"SUI","Geb. Dat.":"07.05.1998","Wettkampf":"Event_7","Ort":"Loc7","Datum":"07.08.2022","athlete_code":"CONTACT.WEB.131887","club_code":"ACC_1.SGALV.1011","event_code":"a21aa-oz1dk-lia60e1y-1-liihyltl-ilg3"}'
+        '{"Resultat":"8.12","Wind":"0.0","Rang":"1f1","Name":"Tester_5","Verein":"Club_5","Nat.":"SUI",'
+        '"Geb. Dat.":"05.05.1998","Wettkampf":"Event_5","Ort":"Loc5","Datum":"05.08.2022",'
+        '"athlete_code":"CONTACT.WEB.131887","club_code":"ACC_1.SGALV.1011",'
+        '"event_code":"a21aa-pjr8yn-leb1bjdk-1-lemufw3n-lw9"}',
+        '{"Resultat":"8.03","Wind":"1.4","Rang":"1f1","Name":"Tester_7","Verein":"Club_7","Nat.":"SUI",'
+        '"Geb. Dat.":"07.05.1998","Wettkampf":"Event_7","Ort":"Loc7","Datum":"07.08.2022",'
+        '"athlete_code":"CONTACT.WEB.131887","club_code":"ACC_1.SGALV.1011",'
+        '"event_code":"a21aa-oz1dk-lia60e1y-1-liihyltl-ilg3"}',
     }
     sample_bestlist = pd.read_csv(DF_PATH, keep_default_na=False, dtype=str)
     config = get_minimal_config()
@@ -166,7 +169,7 @@ def test__results_to_records():
             rank="1f1",
             location="Thun",
             date=date.fromisoformat("2022-10-10"),
-            points=0
+            points=0,
         )
         database.session.add(result)
         database.session.commit()
@@ -205,7 +208,7 @@ def test__read_results_from_database():
             performance=833,
             location="Zürich",
             date=date.fromisoformat("2023-11-10"),
-            points=0
+            points=0,
         )
 
         database.session.add(result)
@@ -252,7 +255,7 @@ def test__read_results_from_database():
             performance=835,
             location="Zürich",
             date=date.fromisoformat("2023-05-10"),
-            points=0
+            points=0,
         )
         database.session.add(result2)
         database.session.commit()
@@ -292,42 +295,36 @@ def test__compare_record_fields():
         ]
     )
 
-    data = np.array([(10, -1.2, "1f1", False, np.datetime64("2023-09-10")),
-                     (10, 5, "1f1", True, np.datetime64("2023-09-10")),
-                     (101, 5, "1f1", False, np.datetime64("2023-10-10"))], dtype=dtypes)
+    data = np.array(
+        [
+            (10, -1.2, "1f1", False, np.datetime64("2023-09-10")),
+            (10, 5, "1f1", True, np.datetime64("2023-09-10")),
+            (101, 5, "1f1", False, np.datetime64("2023-10-10")),
+        ],
+        dtype=dtypes,
+    )
 
     records = data.view(np.recarray)
 
-    assert Processor._compare_record_fields(records[0], records[0], [
-        BestlistField.ID,
-        BestlistField.WIND,
-        BestlistField.RANK,
-        BestlistField.NOT_HOMOLOGATED,
-        BestlistField.DATE
-    ])
+    assert Processor._compare_record_fields(
+        records[0],
+        records[0],
+        [BestlistField.ID, BestlistField.WIND, BestlistField.RANK, BestlistField.NOT_HOMOLOGATED, BestlistField.DATE],
+    )
 
-    assert Processor._compare_record_fields(records[0], records[1], [
-        BestlistField.ID,
-        BestlistField.RANK,
-        BestlistField.DATE
-    ])
+    assert Processor._compare_record_fields(
+        records[0], records[1], [BestlistField.ID, BestlistField.RANK, BestlistField.DATE]
+    )
 
-    assert not Processor._compare_record_fields(records[0], records[1], [
-        BestlistField.ID,
-        BestlistField.WIND,
-        BestlistField.RANK
-    ])
+    assert not Processor._compare_record_fields(
+        records[0], records[1], [BestlistField.ID, BestlistField.WIND, BestlistField.RANK]
+    )
 
-    assert Processor._compare_record_fields(records[1], records[2], [
-        BestlistField.WIND,
-        BestlistField.RANK
-    ])
+    assert Processor._compare_record_fields(records[1], records[2], [BestlistField.WIND, BestlistField.RANK])
 
-    assert not Processor._compare_record_fields(records[1], records[2], [
-        BestlistField.WIND,
-        BestlistField.RANK,
-        BestlistField.DATE
-    ])
+    assert not Processor._compare_record_fields(
+        records[1], records[2], [BestlistField.WIND, BestlistField.RANK, BestlistField.DATE]
+    )
 
 
 def test__update_entries():
@@ -336,22 +333,30 @@ def test__update_entries():
         name="Max Mustermann",
         birthdate=date.fromisoformat("2000-02-15"),
         nationality="SUI",
-        latest_date=date.fromisoformat("2023-01-11")
+        latest_date=date.fromisoformat("2023-01-11"),
     )
-    club = Club(
-        club_code="Club_1",
-        name="LV Muster",
-        latest_date=date.fromisoformat("2023-01-11")
-    )
-    event = Event(
-        event_code="Event_1",
-        name="Test Event",
-        latest_date=date.fromisoformat("2023-01-11")
-    )
+    club = Club(club_code="Club_1", name="LV Muster", latest_date=date.fromisoformat("2023-01-11"))
+    event = Event(event_code="Event_1", name="Test Event", latest_date=date.fromisoformat("2023-01-11"))
 
-    record = np.record((1, -2.0, "1f1", False, "Max Mustermann", "LV Muster", "SUI", np.datetime64("2000-02-15"),
-                        "Test Event", "Thun", np.datetime64("2023-01-11"), "Athlete_1",
-                        "Club_1", "Event_1"), dtype=get_sample_bestlist_record_type())
+    record = np.record(
+        (
+            1,
+            -2.0,
+            "1f1",
+            False,
+            "Max Mustermann",
+            "LV Muster",
+            "SUI",
+            np.datetime64("2000-02-15"),
+            "Test Event",
+            "Thun",
+            np.datetime64("2023-01-11"),
+            "Athlete_1",
+            "Club_1",
+            "Event_1",
+        ),
+        dtype=get_sample_bestlist_record_type(),
+    )
     assert Processor._update_entries(athlete, club, event, record) == 0
 
     record[BestlistField.ATHLETE.value] = "Max"
@@ -397,12 +402,44 @@ def get_sample_bestlist_record_type() -> np.dtype:
 def test__get_record_similarity():
     processor = get_sample_processor()
 
-    record1 = np.record((1, -2.0, "1f1", False, "Max Mustermann", "LV Muster", "SUI", np.datetime64("2000-02-15"),
-                         "Test Event", "Thun", np.datetime64("2023-01-11"), "Athlete_1",
-                         "Club_1", "Event_1"), dtype=get_sample_bestlist_record_type())
-    record2 = np.record((1, -2.0, "1f1", False, "Max Mustermann", "LV Muster", "SUI", np.datetime64("2000-02-15"),
-                         "Test Event", "Thun", np.datetime64("2023-01-11"), "Athlete_1",
-                         "Club_1", "Event_1"), dtype=get_sample_bestlist_record_type())
+    record1 = np.record(
+        (
+            1,
+            -2.0,
+            "1f1",
+            False,
+            "Max Mustermann",
+            "LV Muster",
+            "SUI",
+            np.datetime64("2000-02-15"),
+            "Test Event",
+            "Thun",
+            np.datetime64("2023-01-11"),
+            "Athlete_1",
+            "Club_1",
+            "Event_1",
+        ),
+        dtype=get_sample_bestlist_record_type(),
+    )
+    record2 = np.record(
+        (
+            1,
+            -2.0,
+            "1f1",
+            False,
+            "Max Mustermann",
+            "LV Muster",
+            "SUI",
+            np.datetime64("2000-02-15"),
+            "Test Event",
+            "Thun",
+            np.datetime64("2023-01-11"),
+            "Athlete_1",
+            "Club_1",
+            "Event_1",
+        ),
+        dtype=get_sample_bestlist_record_type(),
+    )
 
     record2[BestlistField.WIND.value] = -2.01
     assert processor._get_record_similarity(record1, record2) == 1
@@ -430,29 +467,113 @@ def test__get_record_similarity():
 def test__compare_records():
     processor = get_sample_processor()
 
-    bl_records = np.array([
-        (833, -2.0, "1f1", False, "Max Mustermann", "LV Muster", "SUI", np.datetime64("2000-02-15"),
-         "Test Event", "Thun", np.datetime64("2023-01-11"), "Athlete_1",
-         "Club_1", "Event_1"),
-        (820, -2.0, "1f1", False, "Max Mustermann", "LV Muster", "SUI", np.datetime64("2000-02-15"),
-         "Test Event", "Thun", np.datetime64("2023-01-11"), "Athlete_1",
-         "Club_1", "Event_1"),
-        (800, -2.0, "1f1", False, "Max Mustermann", "LV Muster", "SUI", np.datetime64("2000-02-15"),
-         "Test Event", "Thun", np.datetime64("2023-01-11"), "Athlete_1",
-         "Club_1", "Event_1")
-    ], dtype=get_sample_bestlist_record_type()).view(np.recarray)
+    bl_records = np.array(
+        [
+            (
+                833,
+                -2.0,
+                "1f1",
+                False,
+                "Max Mustermann",
+                "LV Muster",
+                "SUI",
+                np.datetime64("2000-02-15"),
+                "Test Event",
+                "Thun",
+                np.datetime64("2023-01-11"),
+                "Athlete_1",
+                "Club_1",
+                "Event_1",
+            ),
+            (
+                820,
+                -2.0,
+                "1f1",
+                False,
+                "Max Mustermann",
+                "LV Muster",
+                "SUI",
+                np.datetime64("2000-02-15"),
+                "Test Event",
+                "Thun",
+                np.datetime64("2023-01-11"),
+                "Athlete_1",
+                "Club_1",
+                "Event_1",
+            ),
+            (
+                800,
+                -2.0,
+                "1f1",
+                False,
+                "Max Mustermann",
+                "LV Muster",
+                "SUI",
+                np.datetime64("2000-02-15"),
+                "Test Event",
+                "Thun",
+                np.datetime64("2023-01-11"),
+                "Athlete_1",
+                "Club_1",
+                "Event_1",
+            ),
+        ],
+        dtype=get_sample_bestlist_record_type(),
+    ).view(np.recarray)
 
-    db_records = np.array([
-        (833, -2.0, "1f1", False, "Max Mustermann", "LV Muster", "SUI", np.datetime64("2000-02-15"),
-         "Test Event", "Thun", np.datetime64("2023-01-11"), "Athlete_1",
-         "Club_1", "Event_1"),
-        (820, -2.0, "1f1", False, "Max Mustermann", "LV Muster", "SUI", np.datetime64("2000-02-15"),
-         "Test Event", "Thun", np.datetime64("2023-01-11"), "Athlete_1",
-         "Club_1", "Event_1"),
-        (800, -2.0, "1f1", False, "Max Mustermann", "LV Muster", "SUI", np.datetime64("2000-02-15"),
-         "Test Event", "Thun", np.datetime64("2023-01-11"), "Athlete_1",
-         "Club_1", "Event_1")
-    ], dtype=get_sample_bestlist_record_type()).view(np.recarray)
+    db_records = np.array(
+        [
+            (
+                833,
+                -2.0,
+                "1f1",
+                False,
+                "Max Mustermann",
+                "LV Muster",
+                "SUI",
+                np.datetime64("2000-02-15"),
+                "Test Event",
+                "Thun",
+                np.datetime64("2023-01-11"),
+                "Athlete_1",
+                "Club_1",
+                "Event_1",
+            ),
+            (
+                820,
+                -2.0,
+                "1f1",
+                False,
+                "Max Mustermann",
+                "LV Muster",
+                "SUI",
+                np.datetime64("2000-02-15"),
+                "Test Event",
+                "Thun",
+                np.datetime64("2023-01-11"),
+                "Athlete_1",
+                "Club_1",
+                "Event_1",
+            ),
+            (
+                800,
+                -2.0,
+                "1f1",
+                False,
+                "Max Mustermann",
+                "LV Muster",
+                "SUI",
+                np.datetime64("2000-02-15"),
+                "Test Event",
+                "Thun",
+                np.datetime64("2023-01-11"),
+                "Athlete_1",
+                "Club_1",
+                "Event_1",
+            ),
+        ],
+        dtype=get_sample_bestlist_record_type(),
+    ).view(np.recarray)
 
     empty_records = np.array([], dtype=get_sample_bestlist_record_type()).view(np.recarray)
 
@@ -503,17 +624,48 @@ def test__compare_records():
 
 def test__insert_records():
     processor = get_sample_processor()
-    records = np.array([
-        (833, -2.0, "1f1", False, "Max Mustermann", "LV Muster", "SUI", np.datetime64("2000-02-15"),
-         "Test Event", "Thun", np.datetime64("2023-01-11"), "Athlete_1",
-         "Club_1", "Event_1"),
-        (820, -2.0, "1f1", False, "Petra Tester", "LV Thun", "GER", np.datetime64("2000-02-15"),
-         "Test Event 2", "Thun", np.datetime64("2023-02-11"), "Athlete_2",
-         "Club_1", "Event_2")
-    ], dtype=get_sample_bestlist_record_type()).view(np.recarray)
+    records = np.array(
+        [
+            (
+                833,
+                -2.0,
+                "1f1",
+                False,
+                "Max Mustermann",
+                "LV Muster",
+                "SUI",
+                np.datetime64("2000-02-15"),
+                "Test Event",
+                "Thun",
+                np.datetime64("2023-01-11"),
+                "Athlete_1",
+                "Club_1",
+                "Event_1",
+            ),
+            (
+                820,
+                -2.0,
+                "1f1",
+                False,
+                "Petra Tester",
+                "LV Thun",
+                "GER",
+                np.datetime64("2000-02-15"),
+                "Test Event 2",
+                "Thun",
+                np.datetime64("2023-02-11"),
+                "Athlete_2",
+                "Club_1",
+                "Event_2",
+            ),
+        ],
+        dtype=get_sample_bestlist_record_type(),
+    ).view(np.recarray)
 
     with DatabaseConnection(get_minimal_config()) as database:
-        (added_athletes, added_clubs, added_events), amount_updates = processor._insert_records(database.session, records, 1)
+        (added_athletes, added_clubs, added_events), amount_updates = processor._insert_records(
+            database.session, records, 1
+        )
         database.session.commit()
         assert added_athletes == 1  # Petra Tester
         assert added_clubs == 0
@@ -558,7 +710,7 @@ def test_process():
             rank="1f1",
             location="Loc1",
             date=date.fromisoformat("2022-10-10"),
-            points=0
+            points=0,
         )
         database.session.add(result)
         database.session.commit()

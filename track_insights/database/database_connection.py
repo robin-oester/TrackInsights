@@ -3,9 +3,9 @@
 from __future__ import annotations
 
 import logging
-from sqlalchemy import URL, create_engine
-from sqlalchemy.orm import sessionmaker, Session
 
+from sqlalchemy import URL, create_engine
+from sqlalchemy.orm import Session, sessionmaker
 from track_insights.database import DatabaseBase
 
 logger = logging.getLogger(__name__)

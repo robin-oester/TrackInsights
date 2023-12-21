@@ -1,7 +1,7 @@
+# pylint: disable=redefined-outer-name
 import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-
 from track_insights.database.models import Log
 from track_insights.database.models.log import LogType
 
@@ -20,10 +20,7 @@ def session():
 
 
 def test_add_log(session):
-    log = Log(
-        name="Insertion",
-        description="Longer Description"
-    )
+    log = Log(name="Insertion", description="Longer Description")
     session.add(log)
     session.commit()
 
@@ -36,10 +33,7 @@ def test_add_log(session):
 
 
 def test_update_log(session):
-    log = Log(
-        name="Insertion",
-        description="Longer Description"
-    )
+    log = Log(name="Insertion", description="Longer Description")
     session.add(log)
     session.commit()
 
@@ -52,10 +46,7 @@ def test_update_log(session):
 
 
 def test_delete_log(session):
-    log = Log(
-        name="Insertion",
-        description="Longer Description"
-    )
+    log = Log(name="Insertion", description="Longer Description")
     session.add(log)
     session.commit()
 

@@ -1,14 +1,12 @@
-from urllib.parse import urlparse
-from urllib.parse import parse_qs
-import re
 import logging
-import pandas as pd
+import re
+from urllib.parse import parse_qs, urlparse
 
+import pandas as pd
 from bs4 import BeautifulSoup, Tag
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from seleniumrequests import Chrome
-
 from track_insights.scraping.bestlist_field import BestlistField
 from track_insights.scraping.scrape_config import ScrapeConfig
 
@@ -19,11 +17,10 @@ CLUB_KEY = "acc"
 EVENT_KEY = "evt"
 
 
-base_url = "https://alabus.swiss-athletics.ch/satweb/faces/bestlist.xhtml"
+BASE_URL = "https://alabus.swiss-athletics.ch/satweb/faces/bestlist.xhtml"
 
 
 class Scraper:
-
     def __init__(self, scrape_config: ScrapeConfig):
         """
         Create a scraper that enables the reading of a particular bestlist page.
@@ -34,6 +31,7 @@ class Scraper:
 
         self._silence_loggers()
 
+    # pylint: disable=too-many-locals
     def extract_data(self) -> pd.DataFrame:
         """
         Scrape the bestlist according to the scrape config and return the extracted data as a dataframe.
@@ -43,8 +41,8 @@ class Scraper:
         """
         parsed_html = self._get_parsed_bestlist()
         table = parsed_html.find("table")
-        headers: [str] = []
-        data: [[str]] = []
+        headers: list[str] = []
+        data: list[list[str]] = []
         athlete_index, club_index, event_index = -1, -1, -1
         rows = table.find_all("tr")
         for i, row in enumerate(rows):
@@ -83,11 +81,11 @@ class Scraper:
         options = webdriver.ChromeOptions()
         # options.add_argument('--headless')
         driver = Chrome(options=options)
-        driver.get(base_url)
+        driver.get(BASE_URL)
         driver.find_element(By.ID, "form_anonym:bestlistType_label").click()
         driver.find_element(By.XPATH, "//li[@data-label='Alle Resultate']").click()
 
-        response = driver.request("GET", base_url, params=self.scrape_config.get_query_arguments())
+        response = driver.request("GET", BASE_URL, params=self.scrape_config.get_query_arguments())
         driver.quit()
 
         return BeautifulSoup(response.text, "html.parser")

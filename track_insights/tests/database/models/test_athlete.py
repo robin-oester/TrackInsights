@@ -1,10 +1,10 @@
+# pylint: disable=redefined-outer-name
 from datetime import date, timedelta
 
 import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import sessionmaker
-
 from track_insights.database.models import Athlete
 
 
@@ -27,7 +27,7 @@ def test_add_athlete(session):
         name="Max Mustermann",
         birthdate=date.fromisoformat("2000-02-15"),
         nationality="SUI",
-        latest_date=date.fromisoformat("2023-10-10")
+        latest_date=date.fromisoformat("2023-10-10"),
     )
     session.add(athlete)
     session.commit()
@@ -51,7 +51,7 @@ def test_constraints_athlete(session):
         name="Max Mustermann",
         birthdate=date.fromisoformat("2000-02-15"),
         nationality="SUI",
-        latest_date=date.fromisoformat("2023-10-10")
+        latest_date=date.fromisoformat("2023-10-10"),
     )
 
     athlete2 = Athlete(
@@ -59,7 +59,7 @@ def test_constraints_athlete(session):
         name="Petra Muster",
         birthdate=date.fromisoformat("2002-04-15"),
         nationality="GER",
-        latest_date=date.fromisoformat("2023-09-08")
+        latest_date=date.fromisoformat("2023-09-08"),
     )
 
     session.add(athlete1)
@@ -80,7 +80,7 @@ def test_constraints_athlete(session):
         name=athlete1.name,
         birthdate=athlete1.birthdate,
         nationality=athlete1.nationality,
-        latest_date=date.fromisoformat("2023-05-12")
+        latest_date=date.fromisoformat("2023-05-12"),
     )
 
     session.add(athlete3)
@@ -95,7 +95,7 @@ def test_update_athlete(session):
         name="Max Mustermann",
         birthdate=date.fromisoformat("2000-02-15"),
         nationality="SUI",
-        latest_date=date.fromisoformat("2023-10-10")
+        latest_date=date.fromisoformat("2023-10-10"),
     )
     session.add(athlete)
     session.commit()
@@ -121,7 +121,7 @@ def test_delete_athlete(session):
         name="Max Mustermann",
         birthdate=date.fromisoformat("2000-02-15"),
         nationality="SUI",
-        latest_date=date.fromisoformat("2023-10-10")
+        latest_date=date.fromisoformat("2023-10-10"),
     )
     session.add(athlete)
     session.commit()

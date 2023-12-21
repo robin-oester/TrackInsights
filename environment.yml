@@ -10,12 +10,15 @@ dependencies:
   - python>=3.10
   - pip
   - pip:
-      - selenium
-      - beautifulsoup4
-      - jsonschema
-      - pyaml
-      - sqlalchemy>=2.0
-      - pymysql
-      - selenium-requests
-      - pandas
-      - numpy
+    - selenium
+    - selenium-requests
+  - beautifulsoup4
+  - jsonschema
+  - pyaml
+  - sqlalchemy>=2.0
+  - pymysql
+  - pandas
+  - numpy
+  - types-PyYAML
+  - tldextract
+  - chardet
