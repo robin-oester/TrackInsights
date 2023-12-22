@@ -1,0 +1,61 @@
+runs:
+  using: "composite"
+  steps:
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Check if shared miniconda installation exists (we are on a Github Runner)
+        id: check_files
+        uses: andstor/file-existence-action@v2
+        with:
+          files: "/usr/share/miniconda/envs"
+
+      - name: Set shared conda path
+        if: steps.check_files.outputs.files_exists == 'true'
+        run: echo "CONDAPATH=/usr/share/miniconda/envs" >> $GITHUB_ENV
+        shell: bash
+
+      - name: Miniconda exists, fix permissions
+        if: steps.check_files.outputs.files_exists == 'true'
+        run: sudo chown -R $(whoami):$(id -ng) ${{ env.CONDAPATH }}
+        shell: bash
+
+      - name: Setup miniconda if not exists
+        if: steps.check_files.outputs.files_exists == 'false'
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          auto-update-conda: true
+          python-version: '3.10'
+          miniconda-version: "latest"
+
+      - name: Set custom conda path
+        if: steps.check_files.outputs.files_exists == 'false'
+        run: echo "CONDAPATH=${CONDA}" >> $GITHUB_ENV
+        shell: bash
+
+      - name: Set cache date
+        run: echo "DATE=$(date +'%Y%m%d')" >> $GITHUB_ENV
+        shell: bash
+
+      - uses: actions/cache@v3
+        with:
+          path: ${{ env.CONDAPATH }}
+          key: conda-${{ hashFiles('environment.yml') }}-${{ env.DATE }}
+        id: cache
+
+      - name: Setup requirements
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          conda update -n base -c defaults conda
+          conda update --all
+          conda env create -f ./environment.yml
+          conda run -n track-insights pip install -e .
+          conda run -n track-insights pip install -r dev-requirements.txt
+        shell: bash
+
+      - name: Reinstall track_insights in case of cache
+        if: steps.cache.outputs.cache-hit == 'true'
+        run: conda run -n track-insights pip install -e .
+        shell: bash
