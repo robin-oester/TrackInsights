@@ -1,0 +1,102 @@
+name: linting-and-tests
+on: [pull_request]
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  flake8:
+    timeout-minutes: 20
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Setup conda
+        uses: ./.github/actions/conda
+
+      - name: Flake8
+        run: |
+          conda run -n track-insights flake8 --version
+          conda run -n track-insights flake8 track_insights --statistics
+
+  mypy-typechecking:
+    timeout-minutes: 20
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Setup conda
+        uses: ./.github/actions/conda
+
+      - name: Mypy
+        run: |
+          conda run -n track-insights mypy --version
+          conda run -n track-insights mypy track_insights
+
+  pylint:
+    timeout-minutes: 20
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Setup conda
+        uses: ./.github/actions/conda
+
+      - name: Pylint
+        run: |
+          conda run -n track-insights pylint --version
+          conda run -n track-insights pylint track_insights
+
+  isort:
+    timeout-minutes: 20
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Setup conda
+        uses: ./.github/actions/conda
+
+      - name: Isort
+        run: |
+          conda run -n track-insights isort --version
+          conda run -n track-insights isort track_insights --check --diff
+
+  black:
+    timeout-minutes: 20
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Setup conda
+        uses: ./.github/actions/conda
+
+      - name: Black
+        run: |
+          conda run -n track-insights black --version
+          conda run -n track-insights black --check track_insights --verbose --config black_config.toml
+
+  tests:
+    timeout-minutes: 20
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Setup conda
+        uses: ./.github/actions/conda
+
+      - name: Pytest
+        run: |
+          conda run -n track-insights pytest track_insights --cache-clear
