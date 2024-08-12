@@ -9,7 +9,7 @@ DESCRIPTION = 'A project used to replicate the swiss-athletics database.'
 URL = 'https://github.com/robin-oester/track-insights'
 EMAIL = 'robin.oester@gmail.com'
 AUTHOR = 'Robin Oester'
-REQUIRES_PYTHON = '>=3.10'
+REQUIRES_PYTHON = '>=3.11'
 VERSION = '0.0.1'
 
 # What packages are required for this module to be executed?
@@ -75,7 +75,7 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.11',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy'
     ],

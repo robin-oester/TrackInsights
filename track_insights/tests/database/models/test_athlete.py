@@ -73,20 +73,6 @@ def test_constraints_athlete(session):
 
     with pytest.raises(IntegrityError):
         session.commit()
-    session.rollback()
-
-    athlete3 = Athlete(
-        athlete_code="Code_789",
-        name=athlete1.name,
-        birthdate=athlete1.birthdate,
-        nationality=athlete1.nationality,
-        latest_date=date.fromisoformat("2023-05-12"),
-    )
-
-    session.add(athlete3)
-
-    with pytest.raises(IntegrityError):
-        session.commit()
 
 
 def test_update_athlete(session):

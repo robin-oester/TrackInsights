@@ -26,7 +26,7 @@ Edit the corresponding fields in ```track_insights/config/configuration.yaml``` 
 ## First Steps
 Go to the folder ```track_insights```, which holds the important code files.
 In order to become familiar with the system, execute the main method in ```track_insights/main.py```.
-This should setup the tables in the database and perform the scraping of 100 longjump results from 
+This should set up the tables in the database and perform the scraping of 100 longjump results from 
 the year 2023.
 
 ## Execute Tests

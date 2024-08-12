@@ -1,16 +1,22 @@
 from dataclasses import dataclass
+from typing import Optional
+
+from track_insights.database.models import Discipline
+from track_insights.scraping.bestlist_category import BestlistCategory
 
 
 @dataclass
 class ScrapeConfig:
-    year: int
-    category: str
-    male: bool
-    discipline_code: str
-    indoor: bool
-    allow_wind: bool = False
+    """
+    Configuration class for scraping the bestlist.
+    """
+
+    category: BestlistCategory
+    discipline: Discipline
+    year: Optional[int] = None
+    allow_wind: bool = True
     amount: int = 5000
-    allow_nonhomologated: bool = True
+    only_homologated: bool = False
 
     def get_query_arguments(self) -> dict:
         """
@@ -22,13 +28,13 @@ class ScrapeConfig:
         return {
             "lang": "de",
             "mobile": False,
-            "blyear": self.year,
-            "blcat": self.category,
-            "disci": self.discipline_code,
-            "indoor": self.indoor,
+            "blyear": self.year if self.year is not None else "all",
+            "blcat": self.category.value,
+            "disci": self.discipline.discipline_code,
+            "indoor": self.discipline.indoor,
             "top": self.amount,
             "sw": 1 if self.allow_wind else 0,
-            "hom": 1 if self.allow_nonhomologated else 0,
+            "hom": 1 if self.only_homologated else 0,
         }
 
     def _validate_arguments(self) -> None:

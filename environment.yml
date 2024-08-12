@@ -13,7 +13,9 @@ dependencies:
     - selenium
     - selenium-requests
   - beautifulsoup4
+  - requests
   - jsonschema
+  - tqdm
   - pyaml
   - sqlalchemy>=2.0
   - pymysql
