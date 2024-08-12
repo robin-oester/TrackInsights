@@ -26,7 +26,7 @@ def get_minimal_config() -> dict:
     }
 
 
-def setup():
+def setup_function():
     DATABASE.unlink(True)
 
     with DatabaseConnection(get_minimal_config()) as database:
@@ -64,7 +64,7 @@ def setup():
         database.session.commit()
 
 
-def teardown():
+def teardown_function():
     DATABASE.unlink()
 
 

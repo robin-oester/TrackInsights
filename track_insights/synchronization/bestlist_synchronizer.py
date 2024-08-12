@@ -384,12 +384,14 @@ class BestlistSynchronizer:
                 .filter(
                     Result.discipline_id == discipline.id,
                     (
-                        Result.performance <= last_result
-                        if discipline.config.ascending
-                        else Result.performance >= last_result
-                    )
-                    if last_result is not None
-                    else True,
+                        (
+                            Result.performance <= last_result
+                            if discipline.config.ascending
+                            else Result.performance >= last_result
+                        )
+                        if last_result is not None
+                        else True
+                    ),
                     sqlalchemy.extract("year", Result.date) == year if year is not None else True,
                     Result.homologated if self.scrape_config.only_homologated else True,
                     Result.wind <= 2.0 if Result.wind and not self.scrape_config.allow_wind else True,

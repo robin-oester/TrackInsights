@@ -1,6 +1,7 @@
 """
 This package contains class related to scraping the swiss-athletics database website.
 """
+
 import os
 
 from .bestlist_category import BestlistCategory  # noqa: F401
