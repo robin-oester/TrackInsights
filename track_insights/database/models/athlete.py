@@ -1,6 +1,6 @@
 from datetime import date
 
-from sqlalchemy import CHAR, String, UniqueConstraint
+from sqlalchemy import CHAR, Index, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from track_insights.database.database_base import DatabaseBase
 
@@ -16,7 +16,7 @@ class Athlete(DatabaseBase):
     nationality: Mapped[str] = mapped_column(CHAR(length=3))
     latest_date: Mapped[date]
     results: Mapped[list["Result"]] = relationship(back_populates="athlete", lazy="select")  # noqa: F821
-    __table_args__ = (UniqueConstraint("name", "birthdate", "nationality"), {"extend_existing": True})
+    __table_args__ = (Index("name", "birthdate", "nationality"), {"extend_existing": True})
 
     def __repr__(self) -> str:
         """Return string representation."""

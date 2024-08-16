@@ -3,6 +3,7 @@
 The models are used to abstract the database operations.
 This allows the system to be used with different databases.
 """
+
 import os
 
 from .database_base import DatabaseBase  # noqa: F401

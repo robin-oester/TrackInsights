@@ -26,6 +26,3 @@ dmypy.json
 
 # PyCharm
 .idea/
-
-# System specific data
-data/
