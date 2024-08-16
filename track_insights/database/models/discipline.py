@@ -9,7 +9,7 @@ class DisciplineConfiguration(DatabaseBase):
     __tablename__ = "discipline_configs"
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     name: Mapped[str] = mapped_column(String(length=30), unique=True)
-    ascending: Mapped[bool]
+    ascending: Mapped[bool]  # low performance score is better
     disciplines: Mapped[list["Discipline"]] = relationship(back_populates="config")
     __table_args__ = {"extend_existing": True}
 

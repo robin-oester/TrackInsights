@@ -21,7 +21,7 @@ class Result(DatabaseBase):
     discipline_id: Mapped[int] = mapped_column(ForeignKey(Discipline.id))
     performance: Mapped[int]
     wind: Mapped[Optional[float]] = mapped_column(Numeric(precision=3, scale=1))
-    rank: Mapped[Optional[str]] = mapped_column(String(10))
+    rank: Mapped[str] = mapped_column(String(10))
     location: Mapped[str] = mapped_column(String(50))
     date: Mapped[date]
     homologated: Mapped[bool] = mapped_column(default=True)

@@ -4,6 +4,7 @@ This package contains all the ORM models for the database.
 The models are used to abstract the database operations.
 This allows the system to be used with different databases.
 """
+
 import os
 
 from .athlete import Athlete  # noqa: F401

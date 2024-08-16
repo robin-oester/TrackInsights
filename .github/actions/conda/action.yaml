@@ -4,7 +4,7 @@ runs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: '3.11.5'
 
       - name: Check if shared miniconda installation exists (we are on a Github Runner)
         id: check_files
@@ -27,7 +27,7 @@ runs:
         uses: conda-incubator/setup-miniconda@v2
         with:
           auto-update-conda: true
-          python-version: '3.10'
+          python-version: '3.11.5'
           miniconda-version: "latest"
 
       - name: Set custom conda path
