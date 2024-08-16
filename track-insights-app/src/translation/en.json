@@ -1,0 +1,22 @@
+{
+  "navigation": {
+    "overview": "Overview",
+    "profiles": "Profiles",
+    "statistics": {
+      "header": "Statistics",
+      "bestlists": {
+        "header": "Bestlists",
+        "description": "Bestlists by discipline and age"
+      },
+      "records": {
+        "header": "Swiss Records",
+        "description": "Swiss records by discipline and age"
+      }
+    },
+    "calculator": "Point Calculator"
+  },
+  "localization": {
+    "english": "English",
+    "german": "Deutsch"
+  }
+}
