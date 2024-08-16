@@ -1,3 +1,4 @@
+# pylint: disable=unsubscriptable-object
 from datetime import date
 from typing import Optional
 
