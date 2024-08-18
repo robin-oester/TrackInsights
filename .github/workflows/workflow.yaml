@@ -36,7 +36,7 @@ jobs:
       - name: Mypy
         run: |
           conda run -n track-insights mypy --version
-          conda run -n track-insights mypy track_insights/synchronization
+          conda run -n track-insights mypy track_insights/scores
 
   pylint:
     timeout-minutes: 20

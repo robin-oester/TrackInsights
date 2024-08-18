@@ -13,8 +13,6 @@ class ScoreList:
     """
 
     def __init__(self, discipline: Discipline) -> None:
-        assert discipline.score_identifier is not None
-
         place = "indoor" if discipline.indoor else "outdoor"
         gender = "men" if discipline.male else "women"
         full_path = STORE_FOLDER / place / gender / f"{discipline.score_identifier}.npy"
