@@ -79,7 +79,7 @@ class ScoreList:
 
         assert 1 <= score <= MAX_POINTS
 
-        fetched_perf = self.arr[MAX_POINTS - score].item()
+        fetched_perf: int = self.arr[MAX_POINTS - score].item()
         ret_val: Optional[int] = None
 
         if (fetched_perf == 0 and self.ascending) or (fetched_perf == sys.maxsize and not self.ascending):
