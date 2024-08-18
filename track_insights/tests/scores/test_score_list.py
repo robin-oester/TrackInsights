@@ -126,7 +126,8 @@ def test_init(is_file_mock: MagicMock):
     assert is_file_mock.call_count == 5
 
 
-def test_find_score():
+@patch.object(Path, "is_file", return_value=True)
+def test_find_score(is_file_mock: MagicMock):
     arr = np.arange(1, 1401)
     arr[0] = NO_RESULT_SENTINEL
     arr[800] = NO_RESULT_SENTINEL
@@ -162,8 +163,11 @@ def test_find_score():
         assert score_list.find_score(600) == 599
         assert score_list.find_score(801) == 801
 
+    assert is_file_mock.call_count == 2
 
-def test_performance():
+
+@patch.object(Path, "is_file", return_value=True)
+def test_performance(is_file_mock: MagicMock):
     arr = np.arange(1400, 0, -1)
     arr[0] = NO_RESULT_SENTINEL
     arr[600] = NO_RESULT_SENTINEL
@@ -180,3 +184,5 @@ def test_performance():
         assert score_list.find_performance(1398) == 1398
         assert score_list.find_performance(800) == 801
         assert score_list.find_performance(1) == 2
+
+    assert is_file_mock.call_count == 1

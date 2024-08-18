@@ -14,6 +14,7 @@ dependencies:
     - selenium-requests
   - beautifulsoup4
   - requests
+  - tabula-py
   - jsonschema
   - tqdm
   - pyaml
