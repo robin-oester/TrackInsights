@@ -12,7 +12,7 @@ class ScoreList:
     A class to represent a list of performance scores for a discipline.
     """
 
-    def __init__(self, discipline: Discipline) -> None:
+    def __init__(self, discipline: Discipline):
         assert discipline.score_identifier is not None
 
         place = "indoor" if discipline.indoor else "outdoor"
@@ -80,9 +80,8 @@ class ScoreList:
         assert 1 <= score <= MAX_POINTS
 
         fetched_perf: int = self.arr[MAX_POINTS - score].item()
-        ret_val: Optional[int] = None
 
         if (fetched_perf == 0 and self.ascending) or (fetched_perf == sys.maxsize and not self.ascending):
-            return ret_val
+            return None
 
         return fetched_perf
