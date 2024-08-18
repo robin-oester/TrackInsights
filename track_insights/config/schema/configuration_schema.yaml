@@ -41,3 +41,65 @@ properties:
       - host
       - port
       - database
+  score_lists:
+    type: object
+    properties:
+      outdoor:
+        type: object
+        properties:
+          file:
+            type: string
+            description: |
+              The file to use for the outdoor score list
+            pattern: '^.*\.pdf$'
+          men:
+            type: array
+            items:
+              type: string
+              description: |
+                Contains the page ranges for the score list
+              pattern: '^\d+-\d+$'
+          women:
+            type: array
+            items:
+              type: string
+              description: |
+                Contains the page ranges for the score list
+              pattern: '^\d+-\d+$'
+      indoor:
+        type: object
+        properties:
+          file:
+            type: string
+            description: |
+              The file to use for the outdoor score list
+            pattern: '^.*\.pdf$'
+          men:
+            type: array
+            items:
+              type: string
+              description: |
+                Contains the page ranges for the score list
+              pattern: '^\d+-\d+$'
+          women:
+            type: array
+            items:
+              type: string
+              description: |
+                Contains the page ranges for the score list
+              pattern: '^\d+-\d+$'
+      combined:
+        type: object
+        description: |
+          The configuration for combined events
+        properties:
+          schema:
+            type: string
+            description: |
+              The file to use for the combined score list schema
+            pattern: '^.*\.json$'
+          file:
+            type: string
+            description: |
+              The file to use for the combined score list
+            pattern: '^.*\.json$'

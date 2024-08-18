@@ -1,4 +1,6 @@
 # pylint: disable=unsubscriptable-object
+from typing import Optional
+
 from sqlalchemy import ForeignKey, String, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from track_insights.database.database_base import DatabaseBase
@@ -29,6 +31,7 @@ class Discipline(DatabaseBase):
     indoor: Mapped[bool]
     male: Mapped[bool]
     ignore: Mapped[bool] = mapped_column(default=False)
+    score_identifier: Mapped[Optional[str]] = mapped_column(String(length=30), default=None)
     config: Mapped[DisciplineConfiguration] = relationship(back_populates="disciplines", lazy="joined")
     results: Mapped[list["Result"]] = relationship(back_populates="discipline", lazy="select")  # noqa: F821
     __table_args__ = (UniqueConstraint("discipline_code", "indoor", "male"), {"extend_existing": True})

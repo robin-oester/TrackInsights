@@ -1,3 +1,4 @@
+import json
 import os
 import pathlib
 import re
@@ -22,13 +23,14 @@ DATE_FORMAT = "%d.%m.%Y"
 HOURS_TO_HUNDREDTHS = 100 * 60 * 60
 MINUTES_TO_HUNDREDTHS = 100 * 60
 SECONDS_TO_HUNDREDTHS = 100
+INVALID_RESULT_SENTINEL = -1
 
 
-def validate_yaml(concrete_file: dict, schema_path: pathlib.Path) -> tuple[bool, Optional[ValidationError]]:
+def validate_json(content: dict, schema_path: pathlib.Path) -> tuple[bool, Optional[ValidationError]]:
     """
     Validates a yaml file against a schema.
 
-    :param concrete_file: the loaded content of the file.
+    :param content: the loaded content of the file.
     :param schema_path: path to the schema.
     :return: whether the file is valid and if not, the corresponding error.
     """
@@ -38,11 +40,16 @@ def validate_yaml(concrete_file: dict, schema_path: pathlib.Path) -> tuple[bool,
         schema = yaml.safe_load(schema_file)
 
     try:
-        validate(concrete_file, schema)
+        validate(content, schema)
     except ValidationError as error:
         return False, error
 
     return True, None
+
+
+def read_json_file(file_path: pathlib.Path) -> dict:
+    with open(file_path, "r", encoding="utf-8") as file:
+        return json.load(file)
 
 
 def current_time_millis() -> int:
@@ -81,7 +88,7 @@ def parse_result(serialized_result: str) -> int:
     )
 
     if not match:
-        return -1
+        return INVALID_RESULT_SENTINEL
 
     groups = match.groups()
     if len(groups) == 3:

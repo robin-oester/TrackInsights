@@ -371,7 +371,7 @@ def test__insert_records():
         sync_statistics = synchronizer._insert_records(
             database.session,
             [record1, record2],
-            1,
+            database.session.get(Discipline, 1),
             BestlistCategory.get_age_bounds(synchronizer.scrape_config.category),
         )
         database.session.commit()

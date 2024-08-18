@@ -5,3 +5,37 @@ database:
   host: "localhost"
   port: "3306"
   database: "track_insights"
+score_lists:
+  outdoor:
+    file: "Outdoor.pdf"
+    men:
+      - "9-36"
+      - "39-66"
+      - "69-96"
+      - "99-126"
+      - "129-156"
+      - "249-276"
+    women:
+      - "279-306"
+      - "309-336"
+      - "339-366"
+      - "369-396"
+      - "399-426"
+      - "519-546"
+  indoor:
+    file: "Indoor.pdf"
+    men:
+      - "7-34"
+      - "37-64"
+      - "67-94"
+      - "97-124"
+      - "127-154"
+    women:
+      - "157-184"
+      - "187-214"
+      - "217-244"
+      - "247-274"
+      - "277-304"
+  combined:
+    schema: "combined_schema.json"
+    file: "combined.json"

@@ -8,6 +8,7 @@ from sqlalchemy import and_
 from sqlalchemy.orm import Session
 from track_insights.database import DatabaseConnection
 from track_insights.database.models import Athlete, Club, Discipline, Event, Result
+from track_insights.scores import ScoreList
 from track_insights.scraping import BestlistCategory, BestlistColumn, ScrapeConfig
 from track_insights.synchronization.record import Record
 from track_insights.synchronization.record_collection import RecordCollection
@@ -107,7 +108,7 @@ class BestlistSynchronizer:
             sync_statistics = self._insert_records(
                 database.session,
                 insertion_records,
-                self.scrape_config.discipline.id,
+                self.scrape_config.discipline,
                 BestlistCategory.get_age_bounds(self.scrape_config.category),
             )
 
@@ -117,7 +118,7 @@ class BestlistSynchronizer:
         return sync_statistics
 
     def _insert_records(
-        self, session: Session, records: list[Record], discipline_id: int, age_bounds: tuple[int, int]
+        self, session: Session, records: list[Record], discipline: Discipline, age_bounds: tuple[int, int]
     ) -> SynchronizationStatistics:
         """
         Inserts the records to the database.
@@ -125,12 +126,16 @@ class BestlistSynchronizer:
         as well as the total amount of modifications (corresponds to the number of updates).
 
         :param records: the records to be inserted.
-        :param discipline_id: identifier of the discipline.
+        :param discipline: the discipline.
         :return: synchronization statistics.
         """
 
         added_results, added_athletes, added_clubs, added_events = 0, 0, 0, 0
         total_modifications = 0
+
+        score_list: Optional[ScoreList] = None
+        if discipline.score_identifier is not None and len(records) > 0:
+            score_list = ScoreList(discipline)
 
         # check whether we need to insert new athletes, clubs or event then we apply the value updates from the bestlist
         for record in records:
@@ -190,7 +195,7 @@ class BestlistSynchronizer:
                 found_result = (
                     session.query(Result)
                     .filter(
-                        Result.discipline_id == discipline_id,
+                        Result.discipline_id == discipline.id,
                         Result.athlete_id == athlete.id,
                         Result.club_id == club.id,
                         Result.event_id == event.id,
@@ -213,7 +218,7 @@ class BestlistSynchronizer:
                 athlete=athlete,
                 club=club,
                 event=event,
-                discipline_id=discipline_id,
+                discipline_id=discipline.id,
                 performance=record.performance,
                 wind=record.wind,
                 rank=record.rank,
@@ -221,6 +226,7 @@ class BestlistSynchronizer:
                 date=result_date,
                 homologated=not record.not_homologated,
                 manual=manual,
+                points=score_list.find_score(record.performance) if score_list is not None else 0,
             )
 
             added_results += 1
