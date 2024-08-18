@@ -12,7 +12,7 @@ class ScoreList:
     A class to represent a list of performance scores for a discipline.
     """
 
-    def __init__(self, discipline: Discipline):
+    def __init__(self, discipline: Discipline) -> None:
         assert discipline.score_identifier is not None
 
         place = "indoor" if discipline.indoor else "outdoor"
