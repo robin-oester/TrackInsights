@@ -42,7 +42,7 @@ runs:
       - uses: actions/cache@v3
         with:
           path: ${{ env.CONDAPATH }}
-          key: conda-${{ hashFiles('environment.yml') }}-${{ env.DATE }}
+          key: conda-${{ hashFiles('environment.yml', 'dev-requirements.yml') }}-${{ env.DATE }}
         id: cache
 
       - name: Setup requirements
