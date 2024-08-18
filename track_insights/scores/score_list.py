@@ -13,6 +13,8 @@ class ScoreList:
     """
 
     def __init__(self, discipline: Discipline) -> None:
+        assert discipline.score_identifier is not None
+
         place = "indoor" if discipline.indoor else "outdoor"
         gender = "men" if discipline.male else "women"
         full_path = STORE_FOLDER / place / gender / f"{discipline.score_identifier}.npy"
@@ -78,8 +80,9 @@ class ScoreList:
         assert 1 <= score <= MAX_POINTS
 
         fetched_perf = self.arr[MAX_POINTS - score].item()
+        ret_val: Optional[int] = None
 
         if (fetched_perf == 0 and self.ascending) or (fetched_perf == sys.maxsize and not self.ascending):
-            return None
+            return ret_val
 
         return fetched_perf
