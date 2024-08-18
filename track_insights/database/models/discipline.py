@@ -1,3 +1,4 @@
+# pylint: disable=unsubscriptable-object
 from sqlalchemy import ForeignKey, String, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from track_insights.database.database_base import DatabaseBase

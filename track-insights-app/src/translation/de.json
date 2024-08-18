@@ -1,0 +1,22 @@
+{
+  "navigation": {
+    "overview": "Überblick",
+    "profiles": "Profile",
+    "statistics": {
+      "header": "Statistiken",
+      "bestlists": {
+        "header": "Bestenlisten",
+        "description": "Bestenlisten pro Disziplin und Alter"
+      },
+      "records": {
+        "header": "Schweizerrekorde",
+        "description": "Schweizerrekorde pro Disziplin und Alter"
+      }
+    },
+    "calculator": "Punkterechner"
+  },
+  "localization": {
+    "english": "English",
+    "german": "Deutsch"
+  }
+}
