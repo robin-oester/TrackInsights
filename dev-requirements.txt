@@ -4,6 +4,6 @@ pylint
 isort
 black
 flake8
-mypy==1.10.0
+mypy
 autopep8
 types-requests
