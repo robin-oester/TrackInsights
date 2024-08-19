@@ -3,11 +3,15 @@ import logging
 
 import yaml
 from tqdm import tqdm
-from track_insights.common import CONFIG_PATH, CONFIG_SCHEMA_PATH, IGNORED_PATH, validate_yaml
+from track_insights.common import CONFIG_PATH, CONFIG_SCHEMA_PATH, IGNORED_PATH, validate_json
 from track_insights.database import DatabaseConnection
-from track_insights.synchronization import DisciplineSynchronizer, MetadataSynchronizer
-from track_insights.synchronization.synchronization_error import SynchronizationError
-from track_insights.synchronization.synchronization_statistics import SynchronizationStatistics
+from track_insights.synchronization import (
+    DisciplineSynchronizer,
+    MetadataSynchronizer,
+    SynchronizationError,
+    SynchronizationStatistics,
+)
+from track_insights.synchronization.synchronization_error import SynchronizationErrorType
 
 logging.basicConfig(
     level=logging.NOTSET,
@@ -16,12 +20,15 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+MAX_UNKNOWN_ERRORS = 5
+
 
 # pylint: disable=too-many-locals,too-many-statements
 def main() -> None:
     """
     Main function to start the TrackInsights application with optional filters.
     """
+
     parser = argparse.ArgumentParser(description="TrackInsights - Performance Data Scraper")
 
     parser.add_argument("-d", "--discipline", type=str, help="Specify the discipline to filter results.")
@@ -30,6 +37,7 @@ def main() -> None:
     parser.add_argument("--year", type=int, help="Specify the year to filter results.")
     parser.add_argument("--male", action="store_true", help="Filter results to male athletes.")
     parser.add_argument("--female", action="store_true", help="Filter results to female athletes.")
+    parser.add_argument("--log_deletions", action="store_true", help="Log deleted records.")
 
     args = parser.parse_args()
 
@@ -42,7 +50,8 @@ def main() -> None:
     logger.info("Checking configuration file and initialize database...")
     with open(CONFIG_PATH, "r", encoding="utf-8") as config_file:
         config: dict = yaml.safe_load(config_file)
-    check_configuration(config)
+    if not check_configuration(config):
+        return
 
     # load ignored records
     ignored_entries: set[str] = set()
@@ -69,14 +78,22 @@ def main() -> None:
     if len(disciplines) > 0:
         logger.info(f"Found {len(disciplines)} discipline(s) to fetch.")
         statistics = SynchronizationStatistics()
+        num_errors = 0
         with tqdm(disciplines, desc="Disciplines", unit="discipline") as manager:
             for discipline in manager:
                 try:
                     with DisciplineSynchronizer(config, ignored_entries, discipline) as scraper:
                         statistics.add(scraper.scrape_discipline(start_year=year, end_year=year))
                 except SynchronizationError as err:
-                    logger.error(err.message)
-                    break
+                    logger.warning(err.message)
+                    if err.error_type == SynchronizationErrorType.UNKNOWN:
+                        if num_errors > MAX_UNKNOWN_ERRORS:
+                            logger.error("Too many unknown errors. Stopping the fetcher.")
+                            break
+                        num_errors += 1
+                    else:
+                        logger.error("Connection error. Stopping the fetcher.")
+                        break
         logger.info("Fetcher Summary:")
         logger.info(f"Inserted Records: {statistics.added_records}")
         logger.info(f"Inserted Athletes: {statistics.added_athletes}")
@@ -85,22 +102,25 @@ def main() -> None:
         logger.info(f"Updates: {statistics.updates}")
         logger.info(f"Deletions: {len(statistics.deletions)}")
 
-        for record in statistics.deletions:
-            logger.info(record)
+        if args.log_deletions and len(statistics.deletions) > 0:
+            logger.info("The following records were deleted:")
+            for record in statistics.deletions:
+                logger.info(record)
     else:
         logger.info("No disciplines to fetch.")
 
 
-def check_configuration(config: dict) -> None:
-    valid_yaml, exception = validate_yaml(config, CONFIG_SCHEMA_PATH)
+def check_configuration(config: dict) -> bool:
+    valid_yaml, exception = validate_json(config, CONFIG_SCHEMA_PATH)
 
     if not valid_yaml:
         logger.error(f"Error while validating pipeline configuration file for schema-compliance: {exception.message}")
         logger.error(exception)
-        return
+        return False
 
     with DatabaseConnection(config) as database:
         database.create_tables()
+    return True
 
 
 if __name__ == "__main__":

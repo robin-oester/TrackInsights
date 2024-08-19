@@ -26,3 +26,6 @@ dmypy.json
 
 # PyCharm
 .idea/
+
+# TrackInsights
+scores/lists/
