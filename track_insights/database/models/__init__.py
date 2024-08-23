@@ -9,7 +9,7 @@ import os
 
 from .athlete import Athlete  # noqa: F401
 from .club import Club  # noqa: F401
-from .discipline import Discipline, DisciplineConfiguration  # noqa: F401
+from .discipline import Discipline, DisciplineConfiguration, DisciplineType  # noqa: F401
 from .event import Event  # noqa: F401
 from .log import Log  # noqa: F401
 from .result import Result  # noqa: F401

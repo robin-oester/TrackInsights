@@ -3,7 +3,7 @@ from unittest.mock import MagicMock, patch
 
 import numpy as np
 import pytest
-from track_insights.database.models import Discipline, DisciplineConfiguration
+from track_insights.database.models import Discipline, DisciplineConfiguration, DisciplineType
 from track_insights.scores import NO_RESULT_SENTINEL, ScoreList
 
 
@@ -11,7 +11,7 @@ def get_sample_discipline(ascending: bool = True) -> Discipline:
     config = DisciplineConfiguration(
         id=1,
         name="100 m" if ascending else "Long Jump",
-        ascending=ascending,
+        discipline_type=DisciplineType.SHORT_TRACK if ascending else DisciplineType.JUMP,
     )
     return Discipline(
         id=1,

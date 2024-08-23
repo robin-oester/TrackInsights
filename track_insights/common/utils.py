@@ -77,7 +77,7 @@ def parse_result(serialized_result: str) -> int:
 
     # since we have some results of the form: xx:xx.xx_SR_U18\nResultat wurde [...]
     serialized_result = serialized_result.split("\n")[0].split("_")[0]
-    # serialized_result = re.sub("[^(0-9.:)]", "", serialized_result)
+    serialized_result = re.sub("[^(0-9.:)]", "", serialized_result)
 
     # see: https://pythex.org/ by removing all escape symbols ('\')
     # matches everything of the form HH:mm:ss.hh (ss < 60) or ss.hh (with ss >= 60)

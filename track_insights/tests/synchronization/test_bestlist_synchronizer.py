@@ -5,7 +5,15 @@ from datetime import date
 
 import pandas as pd
 from track_insights.database import DatabaseConnection
-from track_insights.database.models import Athlete, Club, Discipline, DisciplineConfiguration, Event, Result
+from track_insights.database.models import (
+    Athlete,
+    Club,
+    Discipline,
+    DisciplineConfiguration,
+    DisciplineType,
+    Event,
+    Result,
+)
 from track_insights.scraping import BestlistCategory, ScrapeConfig
 from track_insights.synchronization import BestlistSynchronizer, Record, RecordCollection
 
@@ -44,7 +52,7 @@ def setup_function():
 
         discipline_config = DisciplineConfiguration(
             name="Weit",
-            ascending=False,
+            discipline_type=DisciplineType.JUMP,
         )
 
         discipline = Discipline(
@@ -425,7 +433,7 @@ def test_synchronize():
         database.session.commit()
 
     ignored_entries = {
-        '{"Resultat":"8.12a","Wind":"0.0","Rang":"1f1","Name":"Tester_5","Verein":"Club_5",'
+        '{"Resultat":"8.12.a","Wind":"0.0","Rang":"1f1","Name":"Tester_5","Verein":"Club_5",'
         '"Nat.":"SUI","Geb. Dat.":"05.05.1998","Wettkampf":"Event_5","Ort":"Loc5","Datum":"05.08.2022",'
         '"athlete_code":"CONTACT.WEB.131887","club_code":"ACC_1.SGALV.1011",'
         '"event_code":"a21aa-pjr8yn-leb1bjdk-1-lemufw3n-lw9"}',

@@ -7,21 +7,21 @@ class BestlistCategory(StrEnum):
     URL.
     """
 
-    U_10_M = ("5c4o3k5m-d686mo-j986g2ie-1-j986g45f-be",)
-    U_10_W = ("5c4o3k5m-d686mo-j986g2ie-1-j986g45i-bf",)
-    U_12_M = ("5c4o3k5m-d686mo-j986g2ie-1-j986g45k-bg",)
-    U_12_W = ("5c4o3k5m-d686mo-j986g2ie-1-j986g45m-bh",)
-    U_14_M = ("5c4o3k5m-d686mo-j986g2ie-1-j986g45o-bi",)
-    U_14_W = ("5c4o3k5m-d686mo-j986g2ie-1-j986g45q-bj",)
-    U_16_M = ("5c4o3k5m-d686mo-j986g2ie-1-j986g45s-bk",)
-    U_16_W = ("5c4o3k5m-d686mo-j986g2ie-1-j986g45u-bl",)
-    U_18_M = ("5c4o3k5m-d686mo-j986g2ie-1-j986g45w-bm",)
-    U_18_W = ("5c4o3k5m-d686mo-j986g2ie-1-j986g45y-bn",)
-    U_20_M = ("5c4o3k5m-d686mo-j986g2ie-1-j986g45z-bo",)
-    U_20_W = ("5c4o3k5m-d686mo-j986g2ie-1-j986g461-bp",)
-    MEN = ("5c4o3k5m-d686mo-j986g2ie-1-j986g467-bs",)
-    WOMEN = ("5c4o3k5m-d686mo-j986g2ie-1-j986g469-bt",)
-    ALL_MEN = ("M",)
+    U_10_M = "5c4o3k5m-d686mo-j986g2ie-1-j986g45f-be"
+    U_10_W = "5c4o3k5m-d686mo-j986g2ie-1-j986g45i-bf"
+    U_12_M = "5c4o3k5m-d686mo-j986g2ie-1-j986g45k-bg"
+    U_12_W = "5c4o3k5m-d686mo-j986g2ie-1-j986g45m-bh"
+    U_14_M = "5c4o3k5m-d686mo-j986g2ie-1-j986g45o-bi"
+    U_14_W = "5c4o3k5m-d686mo-j986g2ie-1-j986g45q-bj"
+    U_16_M = "5c4o3k5m-d686mo-j986g2ie-1-j986g45s-bk"
+    U_16_W = "5c4o3k5m-d686mo-j986g2ie-1-j986g45u-bl"
+    U_18_M = "5c4o3k5m-d686mo-j986g2ie-1-j986g45w-bm"
+    U_18_W = "5c4o3k5m-d686mo-j986g2ie-1-j986g45y-bn"
+    U_20_M = "5c4o3k5m-d686mo-j986g2ie-1-j986g45z-bo"
+    U_20_W = "5c4o3k5m-d686mo-j986g2ie-1-j986g461-bp"
+    MEN = "5c4o3k5m-d686mo-j986g2ie-1-j986g467-bs"
+    WOMEN = "5c4o3k5m-d686mo-j986g2ie-1-j986g469-bt"
+    ALL_MEN = "M"
     ALL_WOMEN = "W"
 
     @staticmethod

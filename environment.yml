@@ -25,3 +25,5 @@ dependencies:
   - types-PyYAML
   - tldextract
   - chardet
+  - flask
+  - flask_cors
