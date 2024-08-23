@@ -58,7 +58,7 @@ class BestlistSynchronizer:
         bestlist_records = RecordCollection.from_dataframe(bestlist_df, anomaly_path, ignored_entries)
 
         # whether the discipline follow an ascending order (higher results are worse)
-        ascending = self.scrape_config.discipline.config.ascending
+        ascending = self.scrape_config.discipline.config.is_ascending()
 
         # sanity check yields error if the discipline is misconfigured or the bestlist is off
         if not bestlist_records.sanity_check_results(ascending):
@@ -392,7 +392,7 @@ class BestlistSynchronizer:
                     (
                         (
                             Result.performance <= last_result
-                            if discipline.config.ascending
+                            if discipline.config.is_ascending()
                             else Result.performance >= last_result
                         )
                         if last_result is not None
@@ -408,7 +408,7 @@ class BestlistSynchronizer:
                         < upper_bound,
                     ),
                 )
-                .order_by(Result.performance.asc() if discipline.config.ascending else Result.performance.desc())
+                .order_by(Result.performance.asc() if discipline.config.is_ascending() else Result.performance.desc())
                 .all()
             )
             return RecordCollection.from_database(results)

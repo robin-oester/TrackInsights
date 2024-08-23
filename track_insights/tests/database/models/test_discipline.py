@@ -3,7 +3,7 @@ import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import sessionmaker
-from track_insights.database.models import Discipline, DisciplineConfiguration
+from track_insights.database.models import Discipline, DisciplineConfiguration, DisciplineType
 
 
 @pytest.fixture(autouse=True)
@@ -23,7 +23,7 @@ def session():
 def test_add_discipline(session):
     discipline_config = DisciplineConfiguration(
         name="Weit",
-        ascending=False,
+        discipline_type=DisciplineType.JUMP,
     )
 
     discipline = Discipline(
@@ -44,14 +44,14 @@ def test_add_discipline(session):
     assert extracted_discipline.male
     assert not extracted_discipline.indoor
     assert extracted_discipline.config.name == "Weit"
-    assert not extracted_discipline.config.ascending
+    assert not extracted_discipline.config.is_ascending()
     assert extracted_discipline.results == []
 
 
 def test_constraints_discipline(session):
     discipline_config = DisciplineConfiguration(
         name="Weit",
-        ascending=False,
+        discipline_type=DisciplineType.JUMP,
     )
 
     discipline1 = Discipline(
@@ -86,7 +86,7 @@ def test_constraints_discipline(session):
 def test_update_discipline(session):
     discipline_config = DisciplineConfiguration(
         name="Weit",
-        ascending=False,
+        discipline_type=DisciplineType.JUMP,
     )
 
     discipline = Discipline(
@@ -120,7 +120,7 @@ def test_update_discipline(session):
 def test_delete_discipline(session):
     discipline_config = DisciplineConfiguration(
         name="Weit",
-        ascending=False,
+        discipline_type=DisciplineType.JUMP,
     )
 
     discipline = Discipline(

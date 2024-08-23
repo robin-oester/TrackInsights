@@ -4,7 +4,15 @@ from datetime import date
 import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from track_insights.database.models import Athlete, Club, Discipline, DisciplineConfiguration, Event, Result
+from track_insights.database.models import (
+    Athlete,
+    Club,
+    Discipline,
+    DisciplineConfiguration,
+    DisciplineType,
+    Event,
+    Result,
+)
 
 
 @pytest.fixture(autouse=True)
@@ -27,7 +35,7 @@ def session():
     )
     club = Club(club_code="Club_123", name="LV Muster", latest_date=date.fromisoformat("2023-10-10"))
     event = Event(event_code="Event_123", name="Test Event", latest_date=date.fromisoformat("2023-10-10"))
-    discipline_config = DisciplineConfiguration(name="Weit", ascending=False)
+    discipline_config = DisciplineConfiguration(name="Weit", discipline_type=DisciplineType.JUMP)
     discipline = Discipline(
         discipline_code="Discipline_123",
         config=discipline_config,
@@ -101,7 +109,7 @@ def test_add_result(session):
     assert extracted_results[0].location == "Bern"
 
     assert extracted_result.discipline.config.name == "Weit"
-    assert not extracted_result.discipline.config.ascending
+    assert not extracted_result.discipline.config.is_ascending()
     assert extracted_result.discipline.discipline_code == "Discipline_123"
     assert not extracted_result.discipline.indoor
     assert extracted_result.discipline.male

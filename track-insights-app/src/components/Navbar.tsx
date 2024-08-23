@@ -1,4 +1,6 @@
 import React from "react";
+
+import { useTranslation } from "react-i18next";
 import {
   Accordion, AccordionItem,
   Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Image, Link, Navbar,
@@ -9,11 +11,10 @@ import {
   SunIcon, TagUser, WorldIcon
 } from "./Icons.tsx";
 import DarkModeSwitcher from "./DarkModeSwitcher.tsx";
-import logo from '../assets/logo_large.png';
-import { useTranslation } from "react-i18next";
+import logo from '/logo_large.png';
 
 const NavigationBar = () => {
-  const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation();
 
   const handleLanguageChange = (lang: string) => {
     void i18n.changeLanguage(lang);
@@ -184,4 +185,4 @@ const NavigationBar = () => {
   )
 }
 
-export default NavigationBar
+export default NavigationBar;

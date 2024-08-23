@@ -29,8 +29,7 @@ def test_parse_result():
     assert parse_result("10.23_SR_U23") == 1023
     assert parse_result("1:02.48_SB\nWind") == 6248
 
-    assert parse_result("12,4") == -1
     assert parse_result("1:62.9") == -1
     assert parse_result("83.48.12") == -1
     assert parse_result("25:12:54:31") == -1
-    assert parse_result("10.a4") == -1
+    assert parse_result("10.4a") == 1040

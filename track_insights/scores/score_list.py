@@ -26,7 +26,7 @@ class ScoreList:
 
         assert loaded_arr.shape == (MAX_POINTS,)
 
-        self.ascending = discipline.config.ascending
+        self.ascending = discipline.config.is_ascending()
 
         curr_idx = 0
         fill_invalid_val = 0 if self.ascending else sys.maxsize

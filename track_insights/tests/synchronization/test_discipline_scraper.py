@@ -1,6 +1,6 @@
 from unittest.mock import MagicMock, patch
 
-from track_insights.database.models import Discipline, DisciplineConfiguration
+from track_insights.database.models import Discipline, DisciplineConfiguration, DisciplineType
 from track_insights.scraping import BestlistCategory, ScrapeConfig, Scraper
 from track_insights.synchronization import BestlistSynchronizer, DisciplineSynchronizer
 from track_insights.synchronization.synchronization_statistics import SynchronizationStatistics
@@ -14,7 +14,7 @@ def get_sample_discipline() -> Discipline:
         indoor=False,
         male=True,
         ignore=False,
-        config=DisciplineConfiguration(id=1, name="Test Discipline", ascending=True),
+        config=DisciplineConfiguration(id=1, name="Test Discipline", discipline_type=DisciplineType.SHORT_TRACK),
     )
 
 

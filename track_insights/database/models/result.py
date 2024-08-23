@@ -2,8 +2,9 @@
 from datetime import date, datetime
 from typing import Optional
 
-from sqlalchemy import ForeignKey, Index, Numeric, SmallInteger, String, func
+from sqlalchemy import ForeignKey, Index, Numeric, SmallInteger, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy.sql.functions import now
 from track_insights.database.database_base import DatabaseBase
 from track_insights.database.models.athlete import Athlete
 from track_insights.database.models.club import Club
@@ -28,7 +29,7 @@ class Result(DatabaseBase):
     homologated: Mapped[bool] = mapped_column(default=True)
     ignore: Mapped[bool] = mapped_column(default=False)  # result parses but is invalid at swiss-athletics
     manual: Mapped[bool] = mapped_column(default=False)  # result is captured manually
-    insert_date: Mapped[datetime] = mapped_column(server_default=func.now())  # pylint: disable=not-callable
+    insert_date: Mapped[datetime] = mapped_column(server_default=now())
     points: Mapped[int] = mapped_column(SmallInteger, default=0)
     athlete: Mapped["Athlete"] = relationship(back_populates="results", lazy="select")
     club: Mapped["Club"] = relationship(back_populates="results", lazy="select")

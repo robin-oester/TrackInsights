@@ -2,7 +2,7 @@ import logging
 from typing import Optional
 
 from track_insights.database import DatabaseConnection
-from track_insights.database.models import Discipline, DisciplineConfiguration
+from track_insights.database.models import Discipline, DisciplineConfiguration, DisciplineType
 from track_insights.scraping import Scraper
 
 logger = logging.getLogger(__name__)
@@ -48,7 +48,9 @@ class MetadataSynchronizer:
                             )
                             if config is None:
                                 # add the discipline configuration
-                                config = DisciplineConfiguration(name=discipline, ascending=True)  # default
+                                config = DisciplineConfiguration(
+                                    name=discipline, discipline_type=DisciplineType.SHORT_TRACK
+                                )  # default
                                 database.session.add(config)
 
                                 logger.info(f"Insert new discipline configuration: '{discipline}'.")
@@ -109,8 +111,6 @@ class MetadataSynchronizer:
             return disciplines
 
         with DatabaseConnection(self.config) as database:
-            query = database.session.query(Discipline)
-
             filters = [Discipline.ignore.is_(False)]
 
             # add filters based on provided arguments
@@ -121,4 +121,4 @@ class MetadataSynchronizer:
             if indoor is not None:
                 filters.append(Discipline.indoor.is_(indoor))
 
-            return query.filter(*filters).all()
+            return database.session.query(Discipline).filter(*filters).all()
